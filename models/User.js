@@ -15,6 +15,9 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  search: {type: Array},
+  mapBreweries: {type: Array},
+  savedBreweries: {type: Array},
   date: {
     type: Date,
     default: Date.now
