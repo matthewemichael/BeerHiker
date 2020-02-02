@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Card } from 'react-bootstrap';
 
 class Login extends Component {
   constructor() {
@@ -54,15 +54,17 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
+      <div className="wrapperContainer">
       <div className="container" id="loginContainer">
-        <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col-sm-12">
+        <div className="row">
+          <div className="col-sm-12 text-center">
+            <Card className="loginCard">
+            <Card.Header className="cardHeader">
             <h4>
-              <b>Login</b> below
+              <b>BeerHiker</b>
             </h4>
-            <p className="grey-text text-darken-1">
-              Don't have an account? <Link to="/register">Register</Link>
-            </p>
+            </Card.Header>
+            <Card.Body>
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email Address</Form.Label>
@@ -101,13 +103,21 @@ class Login extends Component {
               </Form.Group>
               <Button
                 type="submit"
-                className="btn btn-danger"
+                className="btn loginButton"
               >
                 Login
               </Button>
             </Form>
+            </Card.Body>
+            <Card.Footer>
+            <p className="grey-text text-darken-1">
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
+            </Card.Footer>
+            </Card>
           </div>
         </div>
+      </div>
       </div>
     );
   }
