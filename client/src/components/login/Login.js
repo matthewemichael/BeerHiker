@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 import { Button, Form, Card } from 'react-bootstrap';
+import logo from "../../images/bhlogo.png"
 
 class Login extends Component {
   constructor() {
@@ -57,15 +58,13 @@ class Login extends Component {
       <div className="wrapperContainer">
       <div className="container" id="loginContainer">
         <div className="row">
-          <div className="col-sm-12 text-center">
+          <div className="col-sm-12">
             <Card className="loginCard">
             <Card.Header className="cardHeader">
-            <h4>
-              <b>BeerHiker</b>
-            </h4>
+            <img src={logo} alt="logo" />
             </Card.Header>
             <Card.Body>
-            <Form noValidate onSubmit={this.onSubmit}>
+            <Form noValidate onSubmit={this.onSubmit} className="loginForm">
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email Address</Form.Label>
                   <Form.Control type="email" placeholder="Enter Email"
@@ -109,8 +108,8 @@ class Login extends Component {
               </Button>
             </Form>
             </Card.Body>
-            <Card.Footer>
-            <p className="grey-text text-darken-1">
+            <Card.Footer className="cardFooter">
+            <p>
               Don't have an account? <Link to="/register">Register</Link>
             </p>
             </Card.Footer>

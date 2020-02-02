@@ -10,8 +10,14 @@
     max-width: 700px;
 }
 
+.loginForm {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
 .loginButton {
     background-color: orange;
+    
 }
 .loginButton:hover {
     background-color: rgb(255, 212, 131);
@@ -24,14 +30,19 @@
 }
 
 .cardHeader {
-    background-color: rgb(255, 255, 255);
     border: none;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.cardHeader img {
+    max-height: 20vh;
+}
+
+.cardFooter {
+    text-align: center;
 }
 
 .red-text {
     color: red;
-}
-
-.test {
-    background-color: turquoise;
 }
