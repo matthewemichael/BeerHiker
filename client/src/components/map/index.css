@@ -1,0 +1,51 @@
+  
+.marker{
+    color: orangered;
+    font-size: 1.5em;
+}
+.map_nav{
+    width: 18vw;
+    height: 80vh;
+    background-color: #000;
+    left: 0;
+    margin-top: 5vh;
+    position:absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_more{
+    margin: .2em;
+    position: absolute;
+    z-index: 15;
+}
+
+.search{
+    margin-top: 2em;
+    margin: 1em;
+    text-align: center;
+    color: #ccc;
+}
+
+.search_result{
+    width: 14vw;
+    height: 8vh;
+    border-box: 2px 2px 3px #ccf;
+    background-color: transparent;
+    margin: 1em;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_result:hover{
+    background-color: #252525;
+    cursor: pointer;
+}
