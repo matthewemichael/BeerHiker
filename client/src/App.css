@@ -1,0 +1,78 @@
+/* ------------- Login and Register Components ------------- */
+
+.wrapperContainer {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("./images/beers.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#loginContainer {
+    max-width: 700px;
+}
+
+.loginForm {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.loginButton {
+    background-color: rgb(247, 150, 33);
+    border: none; 
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+}
+
+.loginButton:hover,
+.loginButton:active,
+.loginButton:focus,
+.loginButton:visited {
+    background-color: rgb(252, 178, 62) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.loginCard {
+    margin-top: 5vh;
+    border-radius: 2px;
+}
+
+.cardHeader {
+    border: none;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.cardHeader img {
+    max-height: 20vh;
+}
+
+.cardFooter {
+    text-align: center;
+    background-color: rgb(13, 70, 93, 0.8);
+}
+
+.red-text {
+    color: red;
+}
+
+.noAccount {
+    margin: 0;
+    padding: .5vh;
+    color: white;
+}
+
+.registerLink {
+    color: rgb(252, 178, 62);
+}
+
+.registerLink:hover {
+    text-decoration: none;
+    color: rgb(247, 150, 33)
+}
+
+.createAccount {
+    text-align: center;
+}
