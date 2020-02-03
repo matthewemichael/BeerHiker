@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import NavBarIn from "../NavBarIn/NavBarIn"
 import API from "../../utils/API";
 import NavBarDash from "../NavBarDash/NavBarDash";
+import { Button, Form, Card } from 'react-bootstrap';
 
 class Dashboard extends Component {
 
@@ -64,19 +65,15 @@ class Dashboard extends Component {
                 <span style={{ fontFamily: "monospace" }}>BEER HIKER</span>
               </p>
             </h4>
-          
+            <Button>
             <Link
                 to="/beer"
-                style={{
-                  width: "150px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  marginTop: "1rem"
-                }}
-                className="btn btn-large waves-effect waves-light hoverable orange accent-3"
+                
+                className="btn"
               >
                 Search
               </Link>
+              </Button>
           </div>
         </div>
         <div className="row">
