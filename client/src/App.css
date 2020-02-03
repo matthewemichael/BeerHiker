@@ -1,3 +1,5 @@
+/* ------------- Login and Register Components ------------- */
+
 .wrapperContainer {
     height: 100vh;
     width: 100vw;
@@ -16,16 +18,24 @@
 }
 
 .loginButton {
-    background-color: orange;
-    
+    background-color: rgb(247, 150, 33);
+    border: none; 
+    margin-top: 1vh;
+    margin-bottom: 3vh;
 }
-.loginButton:hover {
-    background-color: rgb(255, 212, 131);
-    color: slategray;
+
+.loginButton:hover,
+.loginButton:active,
+.loginButton:focus,
+.loginButton:visited {
+    background-color: rgb(252, 178, 62) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .loginCard {
-    margin-top: 10vh;
+    margin-top: 5vh;
     border-radius: 2px;
 }
 
@@ -41,8 +51,28 @@
 
 .cardFooter {
     text-align: center;
+    background-color: rgb(13, 70, 93, 0.8);
 }
 
 .red-text {
     color: red;
+}
+
+.noAccount {
+    margin: 0;
+    padding: .5vh;
+    color: white;
+}
+
+.registerLink {
+    color: rgb(252, 178, 62);
+}
+
+.registerLink:hover {
+    text-decoration: none;
+    color: rgb(247, 150, 33)
+}
+
+.createAccount {
+    text-align: center;
 }
