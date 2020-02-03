@@ -31,7 +31,7 @@
 .search_result{
     width: 14vw;
     height: 8vh;
-    border-box: 2px 2px 3px #ccf;
+    box-sizing: border-box 2px 2px 3px #ccf;
     background-color: transparent;
     margin: 1em;
     border: 1px solid #ccc;

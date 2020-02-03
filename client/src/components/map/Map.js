@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 // import "./map.css";
-import 'bulma/css/bulma.css';
 import { Link } from "react-router-dom";
 import NavBarIn from "../NavBarIn/NavBarIn";
 import API from "../../utils/API";
@@ -11,6 +10,7 @@ import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 import coord from './coord.js';
 import NavBar from './navbar';
 import Address from './addresses'
+import InputGroup from 'react-bootstrap/InputGroup'
 
 
 
@@ -188,7 +188,7 @@ loadMap = () => {
                 {this.state.navData.map(data => (
                     <Marker key={data.props.places.id} latitude={parseFloat(data.props.places.latitude)} longitude={parseFloat(data.props.places.longitude)}>
                         <div className= "mapMarkerStyle">
-                          {data.props.places.name[0]}<i className="fa fa-map-marker"></i></div>
+                          {data.props.places.name[0]}<i className="fa fa-map-marker marker"></i></div>
                     </Marker>
                 ))}
                 {/* {this.state.latt && this.state.lngg ?
@@ -222,10 +222,11 @@ loadMap = () => {
                   <div className="card is-horizontal columns" >
                     <div className="card-image column" >
                         <div className="columns is-one-quarter"> 
-                          <label className="containerCheck">
-                            <input type="checkbox" onClick={() => this.onCheckmark({brew})}/>
-                            <span className="checkmark"></span>
-                          </label>
+                          <InputGroup>
+                            <InputGroup.Prepend>
+                            <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
+                            </InputGroup.Prepend>
+                          </InputGroup>
                           <div className="column">
                             <p className="breweryTypeAddress">
                               <strong>

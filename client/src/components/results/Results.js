@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import 'bulma/css/bulma.css'
 import NavBarIn from "../NavBarIn/NavBarIn";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import InputGroup from 'react-bootstrap/InputGroup'
 import "../results/Results.css";
 
 
@@ -102,10 +102,11 @@ class Results extends Component {
                   <div className="card is-horizontal columns" >
                     <div className="card-image column" >
                         <div className="columns is-one-quarter"> 
-                          <label className="containerCheck">
-                            <input type="checkbox" onClick={() => this.onCheckmark({brew})}/>
-                            <span className="checkmark"></span>
-                          </label>
+                          <InputGroup>
+                            <InputGroup.Prepend>
+                            <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
+                            </InputGroup.Prepend>
+                          </InputGroup>
                           <div className="column">
                             <p className="breweryTypeAddress">
                               <strong>
