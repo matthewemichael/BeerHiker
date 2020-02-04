@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { Link } from "react-router-dom";
-import NavBarIn from "../NavBarIn/NavBarIn"
 import API from "../../utils/API";
-import NavBarDash from "../NavBarDash/NavBarDash";
+import TopNav from "../navbar/Navbar"
 import { Button, Form, Card } from 'react-bootstrap';
 
 class Dashboard extends Component {
@@ -38,7 +37,7 @@ class Dashboard extends Component {
 
     return (
       <div class="background">
-        <NavBarDash />
+        <TopNav />
         <section class="hero col s12 center-align">
         <div class="hero-head">
           <div class="container">
