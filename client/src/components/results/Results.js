@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import NavBarIn from "../NavBarIn/NavBarIn";
+import TopNav from "../navbar/Navbar";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import InputGroup from 'react-bootstrap/InputGroup'
-import "../results/Results.css";
+
 
 
 // import { Link } from "react-router-dom";
@@ -82,7 +82,7 @@ class Results extends Component {
   render() {
     return (
       <div>
-        <NavBarIn />
+        <TopNav />
         <div className="container">
           <br />
           <div className="row center">

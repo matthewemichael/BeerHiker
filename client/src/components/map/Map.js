@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-// import "./map.css";
 import { Link } from "react-router-dom";
-import NavBarIn from "../NavBarIn/NavBarIn";
+import TopNav from "../navbar/Navbar";
 import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions"
 import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 import coord from './coord.js';
-import NavBar from './navbar';
 import Address from './addresses'
 import InputGroup from 'react-bootstrap/InputGroup'
 
@@ -171,11 +169,11 @@ loadMap = () => {
       const handleKey = window.addEventListener("keydown", this.handleKeyboardEvent);
       return (
         <div>
-          <NavBarIn />
+          <TopNav />
           <div className="container">
             <br />
-            <div className="row center">
-  
+            <div className="row">
+            
               <h1>
                 {" "}
                 <span>Map Results</span>

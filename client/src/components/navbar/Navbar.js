@@ -15,7 +15,7 @@ class TopNav extends Component {
 
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar className="sticky-nav" collapseOnSelect expand="lg" bg="light" variant="light">
         <Navbar.Brand>
           <img src={logo} alt="logo" />
         </Navbar.Brand>

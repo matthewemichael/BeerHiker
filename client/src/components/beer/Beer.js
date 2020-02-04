@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions"
-import NavBarIn from "../NavBarIn/NavBarIn";
+import TopNav from "../navbar/Navbar";
 
 class Beer extends Component {
 
@@ -42,7 +42,7 @@ class Beer extends Component {
     render() {
       return (
         <div className="background">
-          <NavBarIn />
+          <TopNav />
           <div className="container">
             <br />
             <div className="row center">
