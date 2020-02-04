@@ -1,27 +1,51 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { Navbar, NavDropdown, Nav } from "react-bootstrap";
+import logo from "../../images/bhlogo.png";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 
-class Navbar extends Component {
+class TopNav extends Component {
+
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   render() {
     return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <Link
-              to="/"
-              style={{
-                fontFamily: "monospace"
-              }}
-              className="col s5 brand-logo center black-text"
-            >
-            BEER HIKER
-            
-            </Link>
-          </div>
-        </nav>
-      </div>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand>
+          <img src={logo} alt="logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="/dashboard">Home</Nav.Link>
+            <Nav.Link href="/beer">Search</Nav.Link>
+            <Nav.Link href="/map">Map</Nav.Link>
+            <Nav.Link href="/saved">Saved</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link className="logOut" onClick={this.onLogoutClick}>Log Out</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
 
-export default Navbar;
+TopNav.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(TopNav);
