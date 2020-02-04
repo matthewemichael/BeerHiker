@@ -37,6 +37,7 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
+
 class App extends Component {
   render() {
     return (
@@ -48,19 +49,19 @@ class App extends Component {
             <Route exact path="/" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            
-            
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/beer" component={Beer} />
-              <PrivateRoute exact path="/results" component={Results} />
-              <PrivateRoute exact path="/map" component={Map} />
-              <PrivateRoute exact path="/saved" component={Saved} />
-              <Route component={NoMatch}/>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/beer" component={Beer} />
+            <PrivateRoute exact path="/results" component={Results} />
+            <PrivateRoute exact path="/map" component={Map} />
+            <PrivateRoute exact path="/saved" component={Saved} />
+            <Route component={NoMatch}/>
             </Switch>
+
           </div>
         </Router>
       </Provider>
     );
   }
 }
+
 export default App;

@@ -5,7 +5,7 @@ import { logoutUser } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import TopNav from "../navbar/Navbar"
-import { Button, Form, Card, Jumbotron } from 'react-bootstrap';
+import { Jumbotron } from 'react-bootstrap';
 import logoMin from "../../images/bhlogo-min.png";
 
 class Dashboard extends Component {
@@ -41,11 +41,11 @@ class Dashboard extends Component {
         <TopNav />
         <Jumbotron>
           <div className="row">
-            <div className="col-sm-12">
+            <div className="col-sm-12 text-center">
               <h3>
                 <b>Cheers,</b> {user.name.split(" ")[0]}!
               </h3>
-              <img src={logoMin} className="logoMin" />
+              <img src={logoMin} className="logoMin" alt="logomin" />
               <br />
               {/* <Button>
               <Link
@@ -59,14 +59,14 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-12">
+            <div className="col-sm-12 text-center">
               <h5>
                 Welcome to <b>Beer Hiker</b>, a MERN stack application for beer aficionados to discover, save and map routes to breweries all over the US.
                 <br />
                 <br />
               </h5>
               <h6>
-                To get started, simply click the <Link to="/beer" className='text-link' style={{ color: 'inherit', textDecoration: 'inherit'}}><span className="dashSearch">Search</span></Link> button.
+                To get started click <Link to="/beer" className='text-link' style={{ color: 'inherit', textDecoration: 'inherit'}}><span className="dashSearch">Search</span></Link>
               </h6> 
               
             </div>
