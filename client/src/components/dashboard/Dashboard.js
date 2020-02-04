@@ -5,7 +5,7 @@ import { logoutUser } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import TopNav from "../navbar/Navbar"
-import { Button, Form, Card } from 'react-bootstrap';
+import { Button, Form, Card, Jumbotron } from 'react-bootstrap';
 
 class Dashboard extends Component {
 
@@ -36,46 +36,30 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div class="background">
+      <div className="background">
         <TopNav />
-        <section class="hero col s12 center-align">
-        <div class="hero-head">
-          <div class="container">
-          <section class="hero is-large has-sm-img"> 
-        <div class="hero-body"> 
-          <div class="container has-text-centered"> 
-          <div className="container valign-wrapper">
+        <Jumbotron>
+          <div className="row">
+            <div className="col-sm-12">
+              <h4>
+                <b>Hey there,</b> {user.name.split(" ")[0]}
+                <p className="flow-text grey-text text-darken-1">
+                  You are logged into {" "}
+                  <span>BEER HIKER</span>
+                </p>
+              </h4>
+              <Button>
+              <Link
+                  to="/beer"
+                  
+                  className="btn"
+                >
+                  Search
+                </Link>
+                </Button>
+            </div>
           </div>
-            </div> 
-          </div> 
-        </section>
-          </div>
-        </div>
-      </section>
-      <br/>
-      <div className="container registerForm">
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="landing-copy col s12 center-align">
-            <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                You are logged into {" "}
-                <span style={{ fontFamily: "monospace" }}>BEER HIKER</span>
-              </p>
-            </h4>
-            <Button>
-            <Link
-                to="/beer"
-                
-                className="btn"
-              >
-                Search
-              </Link>
-              </Button>
-          </div>
-        </div>
-        <div className="row">
+          <div className="row">
             
             {this.state.searchData.search ? (
                 this.state.searchData.search.map(brew => (
@@ -126,8 +110,9 @@ class Dashboard extends Component {
                 <h3>No Search Data to Display</h3>
               )}
           </div>
-      </div>
-      </div>
+      
+      
+      </Jumbotron>
       </div>
     );
   }
