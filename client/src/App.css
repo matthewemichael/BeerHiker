@@ -4,6 +4,7 @@
     background-color: rgb(252, 178, 62, 0.85);
 }
 
+
 /* ------------- LOGIN AND REGISTER ------------- */
 
 .wrapperContainer {
@@ -83,6 +84,7 @@
     text-align: center;
 }
 
+
 /* -------------- NAVBAR -------------- */
 
 .sticky-nav {
@@ -147,14 +149,6 @@
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(23, 122, 162)' stroke-width='1.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-@media screen and (max-width: 991.98px) {
-
-    .logOut,
-    .logOut:hover {
-        border: none;
-    }
-
-}
 
 /* ----------- DASHBOARD ------------ */
 
@@ -162,8 +156,8 @@
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
     width: 75vw;
+    max-width: 860px;
     background-color: rgb(245, 251, 254);
     border: solid 1px rgb(13, 70, 93, 0.6);
     border-radius: 2px;
@@ -194,26 +188,38 @@
     text-decoration: none;
 }
 
+/* ------------ SEARCH ---------- */
 
-@media screen and (max-width: 768px) {
-
-    .logoMin {
-        max-height: 15vh;
-    }
-
-    h4, h5, h6 {
-        font-size: smaller;
-    }
-
-    .dashSearch {
-        display: block;
-        padding: 0;
-        margin-top: 1vh;
-        margin-bottom: 1vh;
-    }
-  
-
+.brewSearchTitle {
+    font-weight: 300;
 }
+
+.brewSearch {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.brewSearchButton {
+    margin-top: 10px;
+    padding: 8px 5px 8px 5px;
+    background-color: rgb(245, 251, 254);
+    border: solid 1px rgb(13, 70, 93) !important;
+    color: rgb(13, 70, 93) !important;
+    border-radius: 2px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.brewSearchButton:hover,
+.brewSearchButton:active,
+.brewSearchButton:focus {
+    background-color: rgb(245, 251, 254);
+    color: #177aa2 !important;
+    border: solid 1px #177aa2 !important;
+    text-decoration: none !important;
+}
+
+
 /* ----------- MAP ----------- */
 
 #mapBox {
@@ -269,6 +275,7 @@
     background-color: #252525;
     cursor: pointer;
 }
+
 
 /* ----------- RESULTS ------------- */
 
@@ -347,4 +354,47 @@ background-color: #2196F3;
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-  
+
+
+/* ------------- SMALL SCREEN -------------- */
+
+@media screen and (max-width: 768px) {
+
+    .logoMin {
+        max-height: 15vh;
+    }
+
+    h4, h5, h6 {
+        font-size: smaller;
+    }
+
+    .dashSearch {
+        display: block;
+        padding: 5px, 0, 5px, 0;
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+    }
+
+    .brewSearchTitle {
+        font-size: smaller;
+        font-weight: 300;
+    }
+
+    .form-label {
+        font-weight: 200;
+        font-size: smaller;
+    }
+
+    .form-control {
+        margin-bottom: -10px;
+    }
+}
+
+@media screen and (max-width: 991.98px) {
+
+    .logOut,
+    .logOut:hover {
+        border: none;
+    }
+
+}
