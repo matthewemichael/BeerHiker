@@ -1,3 +1,9 @@
+.background {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(252, 178, 62, 0.85);
+}
+
 /* ------------- LOGIN AND REGISTER ------------- */
 
 .wrapperContainer {
@@ -80,7 +86,8 @@
 /* -------------- NAVBAR -------------- */
 
 .navbar {
-    background-color: rgb(13, 70, 93, 0.9) !important;
+    /* background-color: rgb(13, 70, 93, 0.9) !important; */
+    background-color: #fff !important;
     -webkit-box-shadow: 0px 1px 3px 0.5px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 1px 3px 0.5px rgba(0,0,0,0.75);
     box-shadow: 0px 1px 3px 0.5px rgba(0,0,0,0.75);
@@ -98,22 +105,40 @@
 
 .logOut {
     color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid rgb(13, 70, 93);
     border-radius: 2px;
     margin-bottom: 0 !important;
 }
 
 .logOut:hover {
-    border: 1px solid rgb(247, 150, 33);
+    border: 1px solid #177aa2;
 }
 
 .navbar a {
-    color: white !important;
-    margin-bottom: -20px;
+    color: rgb(13, 70, 93) !important;
+    margin-bottom: -10px;
+    margin-right: 1vw;
 }
 
 .navbar a:hover {
-    color: rgb(247, 150, 33) !important;
+    color: #177aa2 !important;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: rgb(13, 70, 93) !important;
+    border-radius: 2px;
+}
+
+.navbar-light .navbar-toggler:hover {
+    border-color: #177aa2 !important;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(13, 70, 93)' stroke-width='1.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-light .navbar-toggler-icon:hover {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(23, 122, 162)' stroke-width='1.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 @media screen and (max-width: 991.98px) {

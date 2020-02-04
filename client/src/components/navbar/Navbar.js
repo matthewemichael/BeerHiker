@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import { Navbar, NavDropdown, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import logo from "../../images/bhlogo.png";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -15,7 +15,7 @@ class TopNav extends Component {
 
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Navbar.Brand>
           <img src={logo} alt="logo" />
         </Navbar.Brand>

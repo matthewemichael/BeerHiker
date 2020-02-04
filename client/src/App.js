@@ -14,6 +14,7 @@ import Beer from "./components/beer/Beer";
 import NoMatch from "./components/nomatch/NoMatch";
 import Results from "./components/results/Results";
 import Map from "./components/map/Map";
+import Saved from "./components/saved/Saved";
 
 import "./App.css";
 
@@ -53,6 +54,7 @@ class App extends Component {
               <PrivateRoute exact path="/beer" component={Beer} />
               <PrivateRoute exact path="/results" component={Results} />
               <PrivateRoute exact path="/map" component={Map} />
+              <PrivateRoute exact path="/saved" component={Saved} />
               <Route component={NoMatch}/>
             </Switch>
           </div>
