@@ -1,6 +1,7 @@
+
 .background {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
     background-color: rgb(252, 178, 62, 0.85);
 }
 
@@ -222,14 +223,35 @@
 
 /* ----------- MAP ----------- */
 
-#mapBox {
+/* .mapBox {
     max-width: 50vw;
+    padding: 0 !important;
+    margin: 0 auto;
+} */
+
+/* .mapboxDiv {
+    max-width: 50vw;
+    max-height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    overflow: hidden;
+} */
+
+.mapboxWrapper {
+    max-width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mapMarkerStyle {
+    color: white;
 }
 .marker{
     color: orangered;
     font-size: 1.5em;
 }
-.map_nav{
+/* .map_nav{
     width: 18vw;
     height: 80vh;
     background-color: #000;
@@ -274,7 +296,7 @@
 .search_result:hover{
     background-color: #252525;
     cursor: pointer;
-}
+} */
 
 
 /* ----------- RESULTS ------------- */
@@ -387,6 +409,17 @@ background-color: #2196F3;
 
     .form-control {
         margin-bottom: -10px;
+    }
+
+   
+
+    .mapboxWrapper {
+      max-width: 80vw;
+      max-height: 50vh;
+      margin-left: auto;
+      margin-right: auto;
+      overflow: hidden;
+      
     }
 }
 

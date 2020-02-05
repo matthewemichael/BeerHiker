@@ -81,7 +81,7 @@ class Results extends Component {
 
   render() {
     return (
-      <div>
+      <div className="background">
         <TopNav />
         <div className="container">
           <br />
@@ -115,7 +115,7 @@ class Results extends Component {
                                 </ins>
                               </strong> 
                               <br/>
-                              <b>Type: </b>{brew.brewery_type} | <b>Address: </b>{brew.street}, {brew.city} | <b>Phone: </b>{this.formatPhoneNumber(brew.phone)}</p>
+                              <b>Type: </b>{brew.brewery_type} | <b>Address: </b>{brew.street}, {brew.city}, {brew.state} | <b>Phone: </b>{this.formatPhoneNumber(brew.phone)}</p>
                             <a href={brew.website_url}>{brew.website_url}</a>
                           </div>
                         </div>
