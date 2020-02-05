@@ -8,7 +8,7 @@ import { logoutUser } from "../../actions/authActions"
 import ReactMapGL, {Marker, Popup, ScaleControl} from 'react-map-gl';
 import coord from './coord.js';
 import Address from './addresses'
-import InputGroup from 'react-bootstrap/InputGroup'
+import { InputGroup, Card, Button } from 'react-bootstrap'
 
 
 
@@ -146,7 +146,7 @@ loadMap = () => {
             height: '50vh',
             latitude: parseFloat(this.state.hasCoord[0].latitude),
             longitude: parseFloat(this.state.hasCoord[0].longitude),
-            zoom: 11
+            zoom: 10
         },
         setViewPort: null
     },
@@ -169,15 +169,7 @@ loadMap = () => {
       return (
         <div className="background">
           <TopNav />
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12 text-center">
-            
-                <h1>
-                  <span>Map Results</span>
-                </h1>
-              </div>
-            </div>
+          
             <div className="row mapboxWrapper">
               {/* <div className="col-sm-12 mapboxDiv">   */}
                 <ReactMapGL {...this.state.viewport}
@@ -215,47 +207,64 @@ loadMap = () => {
               {/* </div> */}
             </div>
             <br />
-            <div className="container" >
-            {this.state.toMap.mapBreweries ? (
+            <div className="row brewList">
+              <div className="col-sm-12 mapButtonDiv">
+                <Button 
+                  id="mapPageButton"
+                  
+                  style={{ color: 'inherit', textDecoration: 'inherit'}}
+                >
+                  <Link
+                      to="/results"
+                      style={{ color: 'inherit', textDecoration: 'inherit'}}
+                    >
+                      Back to Results
+                  </Link>
+                </Button>
+                <Button
+                  id="mapPageButton"
+                  
+                  style={{ color: 'inherit', textDecoration: 'inherit'}}
+                >
+                  <Link
+                      to="/saved"
+                      onClick={this.onSearchClick} 
+                      style={{ color: 'inherit', textDecoration: 'inherit'}}
+                    >
+                      Save Breweries
+                  </Link>
+                </Button>
+              </div>
+              {this.state.toMap.mapBreweries ? (
               this.state.hasCoord.map(brew => (
+              <div className="col-sm-12 col-xl-6 p-0">  
+                <div className="mapBreweryCard">
+                  <Card>
+                    <Card.Header>
+                    <h5>
+                      {brew.name}
+                    </h5>
+                    </Card.Header>
+                    <Card.Body>
+                      <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
+                    </Card.Body>
+                    <Card.Footer>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                        <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
+                        <span className="mapCardFooterText">Add to Saved List</span>
+                        </InputGroup.Prepend>
+                      </InputGroup>
+                    </Card.Footer>   
+                  </Card> 
+                </div>
+              </div>      
 
-                <div className="section breweryCard" >
-                  <div className="card is-horizontal columns" >
-                    <div className="card-image column" >
-                        <div className="columns is-one-quarter"> 
-                          <InputGroup>
-                            <InputGroup.Prepend>
-                            <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
-                            </InputGroup.Prepend>
-                          </InputGroup>
-                          <div className="column">
-                            <p className="breweryTypeAddress">
-                              <strong>
-                                <ins>
-                                  {brew.name}
-                                </ins>
-                              </strong> 
-                              <br/>
-                              <b>Address: </b>{brew.street}, {brew.city}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-               ))
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
+              ))
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
             </div>
-            <div className={`right`}>
-              <Link to="/beer">
-                <button className="button is-primary has-text-weight-bold">New Search</button>
-              </Link>
-              <Link to="/dashboard">
-                <button onClick={this.onSearchClick} className="button is-black has-text-weight-bold">Save Breweries</button>
-              </Link>
-            </div>
-          </div>
         </div>
 
       );
