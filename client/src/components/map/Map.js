@@ -5,7 +5,7 @@ import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions"
-import ReactMapGL, {Marker, Popup} from 'react-map-gl';
+import ReactMapGL, {Marker, Popup, ScaleControl} from 'react-map-gl';
 import coord from './coord.js';
 import Address from './addresses'
 import InputGroup from 'react-bootstrap/InputGroup'
@@ -21,11 +21,11 @@ class Map extends Component {
         api: [],
         done: false,
         viewport: {
-            width: '100vw',
-            height: '100vh',
+            width: '50vw',
+            height: '50vh',
             latitude: 36.1627,
             longitude: 86.7816,
-            zoom: 8
+            zoom: 5
         },
         setViewPort: null,
         navData: initial,
@@ -142,12 +142,11 @@ loadMap = () => {
      navData: this.state.hasCoord.map(data => <Address key={data.id} places={data} handleClick={this.handleClick} handleOnChange={this.handleOnChange} />),
      done: true,
         viewport: {
-            width: '100vw',
-            height: '100vh',
-            marginLeft: '20vw',
+            width: '80vw',
+            height: '50vh',
             latitude: parseFloat(this.state.hasCoord[0].latitude),
             longitude: parseFloat(this.state.hasCoord[0].longitude),
-            zoom: 8
+            zoom: 11
         },
         setViewPort: null
     },
@@ -168,28 +167,32 @@ loadMap = () => {
     render() {
       const handleKey = window.addEventListener("keydown", this.handleKeyboardEvent);
       return (
-        <div>
+        <div className="background">
           <TopNav />
           <div className="container">
-            <br />
             <div className="row">
+              <div className="col-sm-12 text-center">
             
-              <h1>
-                {" "}
-                <span>Map Results</span>
-              </h1>
-              <div>
-            <ReactMapGL {...this.state.viewport}
-                        mapboxApiAccessToken={"pk.eyJ1IjoiaXNpb21hIiwiYSI6ImNqemhpcTYwMDBkaWIzZm16dG5ucHdweW0ifQ.fAQlsUYEzVN2st5qft2IKw"}
-                        mapStyle="mapbox://styles/isioma/cjzi11o2t2yjv1cqlraiqesb0"
-                        onViewportChange={(viewport) => this.setState({viewport})}>
-                {this.state.navData.map(data => (
+                <h1>
+                  <span>Map Results</span>
+                </h1>
+              </div>
+            </div>
+            <div className="row mapboxWrapper">
+              {/* <div className="col-sm-12 mapboxDiv">   */}
+                <ReactMapGL {...this.state.viewport}
+                  className="mapBox"
+                  mapboxApiAccessToken={"pk.eyJ1IjoiaXNpb21hIiwiYSI6ImNqemhpcTYwMDBkaWIzZm16dG5ucHdweW0ifQ.fAQlsUYEzVN2st5qft2IKw"}
+                  mapStyle="mapbox://styles/mapbox/streets-v11"
+                  onViewportChange={(viewport) => this.setState({viewport})}>
+                    
+                  {this.state.navData.map(data => (
                     <Marker key={data.props.places.id} latitude={parseFloat(data.props.places.latitude)} longitude={parseFloat(data.props.places.longitude)}>
                         <div className= "mapMarkerStyle">
                           {data.props.places.name[0]}<i className="fa fa-map-marker marker"></i></div>
                     </Marker>
-                ))}
-                {/* {this.state.latt && this.state.lngg ?
+                  ))}
+                  {/* {this.state.latt && this.state.lngg ?
                     (<Popup
                         latitude={this.state.latt}
                         longitude={this.state.lngg}
@@ -201,15 +204,15 @@ loadMap = () => {
                                 loc_name: null
 
                             });
-                }}>
+                  }}>
                         <div>
                             <h2>{this.state.loc_name}</h2>
                         </div>
                     </Popup>) : null
-                } */}
+                  } */}
 
-            </ReactMapGL>
-        </div>
+                </ReactMapGL>
+              {/* </div> */}
             </div>
             <br />
             <div className="container" >
