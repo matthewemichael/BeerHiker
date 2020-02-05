@@ -29,6 +29,7 @@ class Map extends Component {
         },
         setViewPort: null,
         navData: initial,
+        selectedBrewery: null,
         latt: null,
         lngg: null,
         loc_name: null,
@@ -39,44 +40,45 @@ class Map extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
-}
+  }
 
   componentDidMount() {
   this.loadMapData(this.props.auth)
- }
+  }
 
- handleClick = (id) => {
+  handleClick = (id) => {
 
-  //  console.log(id);
-  //  console.log(this.state.navData);
+    //  console.log(id);
+     console.log(this.state.navData);
    this.state.navData.map(res => {
 
-       if(res.props.places.id === id){
-           this.setState({
+    if(res.props.places.id === id){
+      this.setState({
 
-               latt: res.props.places.coordinates[0].lat,
-               lngg: res.props.places.coordinates[0].lng,
-               loc_name: res.props.places.name
+      latt: res.props.places.coordinates[0].lat,
+      lngg: res.props.places.coordinates[0].lng,
+      loc_name: res.props.places.name
 
-           });
+      });
 
-       }
-       return this.state;
+    }
+    return this.state;
    });
 
 
-}
-handleOnChange = (e) => {
+  }
+
+  handleOnChange = (e) => {
    let txt = e.target.value.toLowerCase();
    const searched = this.state.api.filter(data => data.address.toLowerCase().includes(txt) ? data : null);
 
    const filtered = searched.map(data => <Address key={data.id} places={data} handleClick={this.handleClick} handleOnChange={this.handleOnChange} />)
    this.setState({
-       navData: filtered
+      navData: filtered
    });
-}
+  }
 
-handleKeyboardEvent = e => {
+  handleKeyboardEvent = e => {
    if(e.key === 'Escape'){
        this.setState({
 
@@ -87,82 +89,98 @@ handleKeyboardEvent = e => {
        })
    }
    return window.removeEventListener("keydown", this);
-}
-
-onCheckmark = brewery => {
-  if(this.state.toSave.includes(brewery.brew)){
-    var holder = this.state.toSave.indexOf(brewery.brew);
-    this.state.toSave.splice(holder, 1);
   }
-  else{
-    this.state.toSave.push(brewery.brew)
-  }
-}
 
- loadMapData = (temp) => {
-   API.getSearchData(temp.user.id)
+  onCheckmark = brewery => {
+    if(this.state.toSave.includes(brewery.brew)){
+      var holder = this.state.toSave.indexOf(brewery.brew);
+      this.state.toSave.splice(holder, 1);
+    }
+    else{
+      this.state.toSave.push(brewery.brew)
+    }
+  }
+
+  loadMapData = (temp) => {
+    API.getSearchData(temp.user.id)
      .then(res =>
        this.setUserState(res.data),
      ).then(()=>
        this.loadMap()
      )
      .catch(err => console.log(err));
- }
+  }
 
- setUserState = (data) => {
+  setUserState = (data) => {
   this.setState({toMap: data});
-}
+  }
 
-onSearchClick = event => {
+  onSearchClick = event => {
   API.saveFavorites(this.state.user.user.id, this.state.toSave)
-};
+  };
 
-loadMap = () => {
-  //for putting in the map on page
-  let tempArr = [];
-  console.log(this.state.toMap.mapBreweries)
-  for(var i=0; i<this.state.toMap.mapBreweries.length; i++){
-    if(this.state.toMap.mapBreweries[i].latitude){
-      tempArr.push(this.state.toMap.mapBreweries[i]);
+  loadMap = () => {
+    //for putting in the map on page
+    let tempArr = [];
+    console.log(this.state.toMap.mapBreweries)
+    for(var i=0; i<this.state.toMap.mapBreweries.length; i++){
+      if(this.state.toMap.mapBreweries[i].latitude){
+        tempArr.push(this.state.toMap.mapBreweries[i]);
+      }
     }
+    this.setState({hasCoord: tempArr})
+    
+    if(this.state.hasCoord.length<1){
+      this.setState({hasCoord: [{
+        name: "No search results Available",
+        latitude: 36.1627,
+        longitude: -86.7816,
+        id: 1
+      }]})
+    }
+    
+    this.setState(
+      {api : this.state.hasCoord,
+      user: this.props.auth,
+      navData: this.state.hasCoord.map(data => <Address key={data.id} places={data} handleClick={this.handleClick} handleOnChange={this.handleOnChange} />),
+      done: true,
+          viewport: {
+              width: '80vw',
+              height: '50vh',
+              latitude: parseFloat(this.state.hasCoord[0].latitude),
+              longitude: parseFloat(this.state.hasCoord[0].longitude),
+              zoom: 10
+          },
+          setViewPort: null
+      },
+    ) 
   }
-  this.setState({hasCoord: tempArr})
-  if(this.state.hasCoord.length<1){
-    this.setState({hasCoord: [{
-      name: "No search results Available",
-      latitude: 36.1627,
-      longitude: -86.7816,
-      id: 1
-    }]})
-  }
-  
-  this.setState(
-    {api : this.state.hasCoord,
-     user: this.props.auth,
-     navData: this.state.hasCoord.map(data => <Address key={data.id} places={data} handleClick={this.handleClick} handleOnChange={this.handleOnChange} />),
-     done: true,
-        viewport: {
-            width: '80vw',
-            height: '50vh',
-            latitude: parseFloat(this.state.hasCoord[0].latitude),
-            longitude: parseFloat(this.state.hasCoord[0].longitude),
-            zoom: 10
-        },
-        setViewPort: null
-    },
-  ) 
-}
 
-// onCheckmark = brewery => {
-//   if(this.state.toMap.includes(brewery.brew)){
-//     var holder = this.state.toMap.indexOf(brewery.brew);
-//     this.state.toMap.splice(holder, 1);
-//   }
-//   else{
-//     this.state.toMap.push(brewery.brew)
-//   }
-//   console.log(this.state.toMap);
-// };
+  
+
+  setSelectedBrewery = object => {
+    this.setState({
+      selectedBrewery: object
+    });
+  };
+
+  closePopup = () => {
+    this.setState({
+      selectedBrewery: null
+    });
+  };
+  
+
+  // onCheckmark = brewery => {
+  //   if(this.state.toMap.includes(brewery.brew)){
+  //     var holder = this.state.toMap.indexOf(brewery.brew);
+  //     this.state.toMap.splice(holder, 1);
+  //   }
+  //   else{
+  //     this.state.toMap.push(brewery.brew)
+  //   }
+  //   console.log(this.state.toMap);
+  // };
 
     render() {
       const handleKey = window.addEventListener("keydown", this.handleKeyboardEvent);
@@ -181,9 +199,22 @@ loadMap = () => {
                   {this.state.navData.map(data => (
                     <Marker key={data.props.places.id} latitude={parseFloat(data.props.places.latitude)} longitude={parseFloat(data.props.places.longitude)}>
                         <div className= "mapMarkerStyle">
-                          {data.props.places.name[0]}<i className="fa fa-map-marker marker"></i></div>
+                          {data.props.places.name}<i className="fa fa-map-marker marker" onClick={() => {
+                            this.setSelectedBrewery(data.props.places);
+                            
+                          }}></i></div>
                     </Marker>
                   ))}
+                  {this.state.selectedBrewery !== null ? (
+      
+                    <Popup
+                      latitude={parseFloat(this.state.selectedBrewery.latitude)}
+                      longitude={parseFloat(this.state.selectedBrewery.longitude)}
+                      onClose={this.closePopup}
+                    >
+                      <p>Hopefully this works!</p>
+                    </Popup>
+                  ) : null }
                   {/* {this.state.latt && this.state.lngg ?
                     (<Popup
                         latitude={this.state.latt}
@@ -211,7 +242,6 @@ loadMap = () => {
               <div className="col-sm-12 mapButtonDiv">
                 <Button 
                   id="mapPageButton"
-                  
                   style={{ color: 'inherit', textDecoration: 'inherit'}}
                 >
                   <Link
@@ -223,7 +253,6 @@ loadMap = () => {
                 </Button>
                 <Button
                   id="mapPageButton"
-                  
                   style={{ color: 'inherit', textDecoration: 'inherit'}}
                 >
                   <Link
