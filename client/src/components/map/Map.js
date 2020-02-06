@@ -21,11 +21,11 @@ class Map extends Component {
         api: [],
         done: false,
         viewport: {
-            width: '50vw',
+            width: '75vw',
             height: '50vh',
             latitude: 36.1627,
             longitude: 86.7816,
-            zoom: 5
+            zoom: 11
         },
         setViewPort: null,
         navData: initial,
@@ -145,7 +145,7 @@ class Map extends Component {
       navData: this.state.hasCoord.map(data => <Address key={data.id} places={data} handleClick={this.handleClick} handleOnChange={this.handleOnChange} />),
       done: true,
           viewport: {
-              width: '80vw',
+              width: '75vw',
               height: '50vh',
               latitude: parseFloat(this.state.hasCoord[0].latitude),
               longitude: parseFloat(this.state.hasCoord[0].longitude),
@@ -197,12 +197,19 @@ class Map extends Component {
                   onViewportChange={(viewport) => this.setState({viewport})}>
                     
                   {this.state.navData.map(data => (
-                    <Marker key={data.props.places.id} latitude={parseFloat(data.props.places.latitude)} longitude={parseFloat(data.props.places.longitude)}>
-                        <div className= "mapMarkerStyle">
-                          {data.props.places.name}<i className="fa fa-map-marker marker" onClick={() => {
-                            this.setSelectedBrewery(data.props.places);
-                            
-                          }}></i></div>
+                    <Marker 
+                      key={data.props.places.id} 
+                      latitude={parseFloat(data.props.places.latitude)} 
+                      longitude={parseFloat(data.props.places.longitude)}
+                      offsetLeft={-170}
+                      offsetTop={-10}  
+                    >
+                      <div className= "mapMarkerStyle">
+                        {data.props.places.name}<i className="fa fa-map-marker marker" onClick={() => {
+                          this.setSelectedBrewery(data.props.places);
+                          
+                        }}></i>
+                      </div>
                     </Marker>
                   ))}
                   {this.state.selectedBrewery !== null ? (
