@@ -252,6 +252,7 @@
 .mapMarkerStyle {
     color: rgb(13, 70, 93);
     font-weight: 500;
+    margin: 0;
 }
 .marker{
     color: orangered;
@@ -323,6 +324,28 @@
 #mapPageButton:active,
 #mapPageButton:focus {
     background-color: rgb(13, 70, 93);
+}
+
+.popupName {
+    font-size: 12px;
+    font-weight: 400;
+
+}
+
+.closePopupButton {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 0;
+    font-size: 12px;
+    
+    
+    line-height: 10px;
+    border-radius: 5%;
+}
+
+.mapboxgl-popup-close-button {
+    display: none;
 }
 
 /* .map_nav{

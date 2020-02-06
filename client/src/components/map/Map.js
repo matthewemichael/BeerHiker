@@ -11,7 +11,6 @@ import Address from './addresses'
 import { InputGroup, Card, Button } from 'react-bootstrap'
 
 
-
 class Map extends Component {
   
   constructor() {
@@ -92,6 +91,7 @@ class Map extends Component {
   }
 
   onCheckmark = brewery => {
+    console.log(brewery.brew);
     if(this.state.toSave.includes(brewery.brew)){
       var holder = this.state.toSave.indexOf(brewery.brew);
       this.state.toSave.splice(holder, 1);
@@ -145,7 +145,7 @@ class Map extends Component {
       navData: this.state.hasCoord.map(data => <Address key={data.id} places={data} handleClick={this.handleClick} handleOnChange={this.handleOnChange} />),
       done: true,
           viewport: {
-              width: '75vw',
+              width: '80vw',
               height: '50vh',
               latitude: parseFloat(this.state.hasCoord[0].latitude),
               longitude: parseFloat(this.state.hasCoord[0].longitude),
@@ -201,11 +201,12 @@ class Map extends Component {
                       key={data.props.places.id} 
                       latitude={parseFloat(data.props.places.latitude)} 
                       longitude={parseFloat(data.props.places.longitude)}
-                      offsetLeft={-170}
-                      offsetTop={-10}  
+                      // offsetLeft={-170}
+                      // offsetTop={-10}  
                     >
                       <div className= "mapMarkerStyle">
-                        {data.props.places.name}<i className="fa fa-map-marker marker" onClick={() => {
+                          
+                          <i className="fa fa-map-marker marker" onClick={() => {
                           this.setSelectedBrewery(data.props.places);
                           
                         }}></i>
@@ -217,29 +218,16 @@ class Map extends Component {
                     <Popup
                       latitude={parseFloat(this.state.selectedBrewery.latitude)}
                       longitude={parseFloat(this.state.selectedBrewery.longitude)}
-                      onClose={this.closePopup}
+                      // onClose={this.closePopup}
                     >
-                      <p>Hopefully this works!</p>
+                      <p className="popupName">{this.state.selectedBrewery.name}</p>
+                      <Button className="btn-danger closePopupButton"  onClick={this.closePopup}
+                        // href={`https://www.google.com/maps/dir/?api=1&destination=${this.state.selectedBrewery.latitude},${this.state.selectedBrewery.longitude}`} target="_blank
+                      >
+                        X
+                      </Button>
                     </Popup>
                   ) : null }
-                  {/* {this.state.latt && this.state.lngg ?
-                    (<Popup
-                        latitude={this.state.latt}
-                        longitude={this.state.lngg}
-                        onClose={() => {
-                            this.setState({
-
-                                latt: null,
-                                lngg: null,
-                                loc_name: null
-
-                            });
-                  }}>
-                        <div>
-                            <h2>{this.state.loc_name}</h2>
-                        </div>
-                    </Popup>) : null
-                  } */}
 
                 </ReactMapGL>
               {/* </div> */}
@@ -283,6 +271,7 @@ class Map extends Component {
                     </Card.Header>
                     <Card.Body>
                       <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
+                      <a href={`https://www.google.com/maps/dir/?api=1&destination=${brew.latitude},${brew.longitude}`} target="_blank">Directions</a>
                     </Card.Body>
                     <Card.Footer>
                       <InputGroup>
