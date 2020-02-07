@@ -113,23 +113,27 @@
 }
 
 .logOut {
-    color: #fff;
-    border: 1px solid rgb(13, 70, 93);
+    background-color: #177aa2;
+    color: white !important;
+    border: solid 1px rgb(13, 70, 93) !important;
     border-radius: 2px;
+    font-weight: 400;
+    text-decoration: none;
     margin-bottom: 0 !important;
 }
 
 .logOut:hover {
-    border: 1px solid #177aa2;
+    background-color: rgb(13, 70, 93);
+    color: white !important;
 }
 
-.navbar a {
+.leftLink {
     color: rgb(13, 70, 93) !important;
+    margin-right: 5px;
     margin-bottom: -10px;
-    margin-right: 1vw;
 }
 
-.navbar a:hover {
+.leftLink:hover {
     color: #177aa2 !important;
 }
 
@@ -281,8 +285,6 @@
     
 }
 
-
-
 .mapBreweryCard .card-header .brewCardTitle {
     margin-bottom: 10px;
     font-size: 1.125em;
@@ -293,7 +295,6 @@
 
 .mapBreweryCard .card-header .brewCardTitle:hover {
     color: rgb(13, 70, 93);
-    
 }
 
 .mapBreweryCard button.btn.btn-primary,
@@ -314,8 +315,8 @@
     font-size: 1.5em;
     color: #177aa2;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 12px;
 }
 
 .mapBreweryCard .fa-info-circle:hover {
@@ -584,9 +585,17 @@ background-color: #2196F3;
 
 @media screen and (max-width: 991.98px) {
 
-    .logOut,
+    .logOut {
+        border: none !important;
+        color: rgb(13, 70, 93) !important;
+        background: transparent;
+        padding-top: 5px !important;
+        
+    }
+
     .logOut:hover {
-        border: none;
+        color: #177aa2 !important;
+        background: transparent;
     }
 
     .mapboxWrapper {

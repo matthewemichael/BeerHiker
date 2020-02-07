@@ -22,14 +22,15 @@ class TopNav extends Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link id="leftLink" href="/dashboard">Home</Nav.Link>
-            <Nav.Link id="leftLink" href="/beer">Search</Nav.Link>
-            <Nav.Link id="leftLink" href="/map">Map</Nav.Link>
-            <Nav.Link id="leftLink" href="/saved">Saved</Nav.Link>
+            <Nav.Link className="leftLink" href="/dashboard">Home</Nav.Link>
+            <Nav.Link className="leftLink" href="/beer">Search</Nav.Link>
+            <Nav.Link className="leftLink" href="/map">Map</Nav.Link>
+            <Nav.Link className="leftLink" href="/saved">Saved</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link 
-            className="logOut" 
+            className="logOut"
+            style={{ color: 'inherit', textDecoration: 'inherit'}}
             onClick={this.onLogoutClick}
             >
               Log Out

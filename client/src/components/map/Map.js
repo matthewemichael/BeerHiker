@@ -231,11 +231,9 @@ class Map extends Component {
                       latitude={parseFloat(data.props.places.latitude)} 
                       longitude={parseFloat(data.props.places.longitude)} 
                     >
-                      <div className= "mapMarkerStyle">
-                          
+                      <div className= "mapMarkerStyle">  
                         <i className="fas fa-beer marker" onClick={() => {
                         this.setSelectedBrewery(data.props.places);
-                          
                         }}></i>
                       </div>
                     </Marker>
@@ -253,6 +251,7 @@ class Map extends Component {
                       </Button>
                       <h6><a href={`https://www.google.com/maps/dir/?api=1&destination=${this.state.selectedBrewery.latitude},${this.state.selectedBrewery.longitude}`} target="_blank" rel="noopener noreferrer">{this.state.selectedBrewery.street}, {this.state.selectedBrewery.city}</a></h6>
                     </Popup>
+                    
                   ) : null }
 
                 </ReactMapGL>
@@ -290,36 +289,33 @@ class Map extends Component {
               <div className="col-sm-12 col-xl-6 p-0">  
                 <div className="mapBreweryCard">
                   <Accordion>
-                  <Card>
-                    <Card.Header>
-                    <span className="brewCardTitle" onClick={() => {this.setSelectedBrewery(brew);}}>
-                    
-                      {brew.name}
-                      
-                    </span>
-                    <span>
-                      <Accordion.Toggle as={Button}  eventKey="0">
-                      <i class="fas fa-info-circle"></i>
-
-                      </Accordion.Toggle>
-                    </span>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
-                      <h6 className="breweryTypeAddress"> <a href={`tel:${(brew.phone)}`}>{this.formatPhoneNumber(brew.phone)}</a> </h6>
-                      <h6><a href={`https://www.google.com/maps/dir/?api=1&destination=${brew.latitude},${brew.longitude}`} target="_blank" rel="noopener noreferrer">Directions</a></h6>
-                    </Card.Body>
-                    </Accordion.Collapse>
-                    <Card.Footer>
-                      <InputGroup>
-                        <InputGroup.Prepend>
-                        <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
-                        <span className="mapCardFooterText">Add to Saved List</span>
-                        </InputGroup.Prepend>
-                      </InputGroup>
-                    </Card.Footer>   
-                  </Card> 
+                    <Card>
+                      <Card.Header>
+                        <span className="brewCardTitle" onClick={() => {this.setSelectedBrewery(brew);}}>
+                          {brew.name}
+                        </span>
+                        <span>
+                        <Accordion.Toggle as={Button} eventKey="0">
+                        <i class="fas fa-info-circle"></i>
+                        </Accordion.Toggle>
+                        </span>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                          <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
+                          <h6 className="breweryTypeAddress"> <a href={`tel:${(brew.phone)}`}>{this.formatPhoneNumber(brew.phone)}</a> </h6>
+                          <h6><a href={`https://www.google.com/maps/dir/?api=1&destination=${brew.latitude},${brew.longitude}`} target="_blank" rel="noopener noreferrer">Directions</a></h6>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                      <Card.Footer>
+                        <InputGroup>
+                          <InputGroup.Prepend>
+                          <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
+                          <span className="mapCardFooterText">Add to Saved List</span>
+                          </InputGroup.Prepend>
+                        </InputGroup>
+                      </Card.Footer>   
+                    </Card> 
                   </Accordion>
                 </div>
               </div>      
