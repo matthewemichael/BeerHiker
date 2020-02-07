@@ -278,10 +278,48 @@
 .mapBreweryCard .card-header {
     background-color: rgb(245, 251, 254);
     border: none;
+    
 }
 
-.mapBreweryCard .card-header h5 {
-    padding: 5px 5px 0px 0px;
+
+
+.mapBreweryCard .card-header .brewCardTitle {
+    margin-bottom: 10px;
+    font-size: 1.125em;
+    font-weight: 500;
+    color: #177aa2;
+    cursor: pointer;
+}
+
+.mapBreweryCard .card-header .brewCardTitle:hover {
+    color: rgb(13, 70, 93);
+    
+}
+
+.mapBreweryCard button.btn.btn-primary,
+.mapBreweryCard button.btn.btn-active,
+.mapBreweryCard button.btn.btn.focus,
+.mapBreweryCard button.btn.btn:focus {
+    background: transparent;
+    padding: 0px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: none;
+    box-shadow: none !important;
+    
+}
+
+.mapBreweryCard .fa-info-circle {
+    font-size: 1.5em;
+    color: #177aa2;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.mapBreweryCard .fa-info-circle:hover {
+    color: rgb(13, 70, 93);
 }
 
 .mapBreweryCard .card-body {
@@ -327,9 +365,8 @@
 }
 
 .popupName {
-    font-size: 14px;
-    font-weight: 500;
-
+    margin-bottom: 5px;
+    font-weight: bolder;
 }
 
 .closePopupButton {
@@ -486,6 +523,14 @@ background-color: #2196F3;
     h4, h5, h6 {
         font-size: smaller;
     }
+
+    .mapBreweryCard .card-header .brewCardTitle {
+        font-size: smaller;
+    }
+
+    .mapBreweryCard .fa-info-circle {
+        font-size: 1em;
+    }    
 
     .mapCardFooterText {
         font-size: smaller;
