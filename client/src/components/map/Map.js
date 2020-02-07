@@ -5,10 +5,10 @@ import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions"
-import ReactMapGL, {Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import coord from './coord.js';
 import Address from './addresses'
-import { InputGroup, Card, Button } from 'react-bootstrap'
+import { InputGroup, Card, Button, Accordion, AccordionCollapse } from 'react-bootstrap'
 
 
 class Map extends Component {
@@ -66,6 +66,17 @@ class Map extends Component {
 
 
   }
+
+  formatPhoneNumber = (str) => {
+    //Filter only numbers from the input
+    let cleaned = ('' + str).replace(/\D/g, '');
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return match[1] + '-' + match[2] + '-' + match[3]
+    };
+    return str
+  };
 
   handleOnChange = (e) => {
    let txt = e.target.value.toLowerCase();
@@ -218,14 +229,12 @@ class Map extends Component {
                     <Marker 
                       key={data.props.places.id} 
                       latitude={parseFloat(data.props.places.latitude)} 
-                      longitude={parseFloat(data.props.places.longitude)}
-                      // offsetLeft={-170}
-                      // offsetTop={-10}  
+                      longitude={parseFloat(data.props.places.longitude)} 
                     >
                       <div className= "mapMarkerStyle">
                           
-                          <i className="fas fa-beer marker" onClick={() => {
-                          this.setSelectedBrewery(data.props.places);
+                        <i className="fas fa-beer marker" onClick={() => {
+                        this.setSelectedBrewery(data.props.places);
                           
                         }}></i>
                       </div>
@@ -238,12 +247,11 @@ class Map extends Component {
                       longitude={parseFloat(this.state.selectedBrewery.longitude)}
                       // onClose={this.closePopup}
                     >
-                      <p className="popupName">{this.state.selectedBrewery.name}</p>
-                      <Button className="btn-danger closePopupButton"  onClick={this.closePopup}
-                        // href={`https://www.google.com/maps/dir/?api=1&destination=${this.state.selectedBrewery.latitude},${this.state.selectedBrewery.longitude}`} target="_blank
-                      >
+                      <h6 className="popupName">{this.state.selectedBrewery.name}</h6>
+                      <Button className="btn-danger closePopupButton" onClick={this.closePopup}>
                         X
                       </Button>
+                      <h6><a href={`https://www.google.com/maps/dir/?api=1&destination=${this.state.selectedBrewery.latitude},${this.state.selectedBrewery.longitude}`} target="_blank" rel="noopener noreferrer">{this.state.selectedBrewery.street}, {this.state.selectedBrewery.city}</a></h6>
                     </Popup>
                   ) : null }
 
@@ -281,16 +289,28 @@ class Map extends Component {
               this.state.hasCoord.map(brew => (
               <div className="col-sm-12 col-xl-6 p-0">  
                 <div className="mapBreweryCard">
+                  <Accordion>
                   <Card>
                     <Card.Header>
-                    <h5>
+                    <span className="brewCardTitle" onClick={() => {this.setSelectedBrewery(brew);}}>
+                    
                       {brew.name}
-                    </h5>
+                      
+                    </span>
+                    <span>
+                      <Accordion.Toggle as={Button}  eventKey="0">
+                      <i class="fas fa-info-circle"></i>
+
+                      </Accordion.Toggle>
+                    </span>
                     </Card.Header>
+                    <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
+                      <h6 className="breweryTypeAddress"> <a href={`tel:${(brew.phone)}`}>{this.formatPhoneNumber(brew.phone)}</a> </h6>
                       <h6><a href={`https://www.google.com/maps/dir/?api=1&destination=${brew.latitude},${brew.longitude}`} target="_blank" rel="noopener noreferrer">Directions</a></h6>
                     </Card.Body>
+                    </Accordion.Collapse>
                     <Card.Footer>
                       <InputGroup>
                         <InputGroup.Prepend>
@@ -300,6 +320,7 @@ class Map extends Component {
                       </InputGroup>
                     </Card.Footer>   
                   </Card> 
+                  </Accordion>
                 </div>
               </div>      
 
