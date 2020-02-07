@@ -117,16 +117,26 @@ class Map extends Component {
 
   onSearchClick = event => {
     let temp = [];
-    console.log(this.state)
     if(this.state.toMap.savedBreweries.length){
       temp = this.state.toSave.concat(this.state.toMap.savedBreweries)
     }
     else{
       temp = this.state.toSave
     }
-    
-    console.log(temp)
-  API.saveFavorites(this.state.user.user.id, temp)
+    var tmp = [];
+    for(var i = 0; i < temp.length; i++){
+        if(tmp.indexOf(temp[i].id) == -1){
+        tmp.push(temp[i].id);
+        }
+    }
+    for(var i=0; i<tmp.length;i++){
+      for(var j=0;j<temp.length;j++){
+        if(tmp[i] === temp[j].id){
+          tmp[i]= temp[j];
+        }
+      }
+    }    
+  API.saveFavorites(this.state.user.user.id, tmp)
   };
 
   loadMap = () => {

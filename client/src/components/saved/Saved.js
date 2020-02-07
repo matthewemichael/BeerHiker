@@ -47,10 +47,8 @@ class Saved extends Component {
         for(var i=0;i<this.state.saved.savedBreweries.length;i++){
             if(this.state.saved.savedBreweries[i]===brew.brew){
                delete this.state.saved.savedBreweries[i];
-               console.log("test")
             }
         }
-        console.log(this.state.saved);
         var filtered = this.state.saved.savedBreweries.filter(function (el) {
             return el != null;
           });
