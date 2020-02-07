@@ -5,7 +5,7 @@ import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions"
-import ReactMapGL, {Marker, Popup, ScaleControl} from 'react-map-gl';
+import ReactMapGL, {Marker, Popup } from 'react-map-gl';
 import coord from './coord.js';
 import Address from './addresses'
 import { InputGroup, Card, Button } from 'react-bootstrap'
@@ -24,7 +24,7 @@ class Map extends Component {
             height: '50vh',
             latitude: 36.1627,
             longitude: 86.7816,
-            zoom: 11
+            zoom: 9
         },
         setViewPort: null,
         navData: initial,
@@ -91,7 +91,6 @@ class Map extends Component {
   }
 
   onCheckmark = brewery => {
-    console.log(brewery.brew);
     if(this.state.toSave.includes(brewery.brew)){
       var holder = this.state.toSave.indexOf(brewery.brew);
       this.state.toSave.splice(holder, 1);
@@ -122,7 +121,6 @@ class Map extends Component {
   loadMap = () => {
     //for putting in the map on page
     let tempArr = [];
-    console.log(this.state.toMap.mapBreweries)
     for(var i=0; i<this.state.toMap.mapBreweries.length; i++){
       if(this.state.toMap.mapBreweries[i].latitude){
         tempArr.push(this.state.toMap.mapBreweries[i]);
@@ -149,7 +147,7 @@ class Map extends Component {
               height: '50vh',
               latitude: parseFloat(this.state.hasCoord[0].latitude),
               longitude: parseFloat(this.state.hasCoord[0].longitude),
-              zoom: 10
+              zoom: 9
           },
           setViewPort: null
       },
@@ -206,7 +204,7 @@ class Map extends Component {
                     >
                       <div className= "mapMarkerStyle">
                           
-                          <i className="fa fa-map-marker marker" onClick={() => {
+                          <i className="fas fa-beer marker" onClick={() => {
                           this.setSelectedBrewery(data.props.places);
                           
                         }}></i>
@@ -271,7 +269,7 @@ class Map extends Component {
                     </Card.Header>
                     <Card.Body>
                       <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
-                      <a href={`https://www.google.com/maps/dir/?api=1&destination=${brew.latitude},${brew.longitude}`} target="_blank">Directions</a>
+                      <h6><a href={`https://www.google.com/maps/dir/?api=1&destination=${brew.latitude},${brew.longitude}`} target="_blank" rel="noopener noreferrer">Directions</a></h6>
                     </Card.Body>
                     <Card.Footer>
                       <InputGroup>
