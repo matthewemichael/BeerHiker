@@ -61,14 +61,38 @@ class Results extends Component {
   }
 
   setResultState = (data) => {
+
+    // // Use this to prevent display of search results that don't have lat and long coords
+    // // ---------------------------------------------------------------------------------
+    // let resultsWithCoords = [];
+    // for(var i=0; i<data.length; i++){
+    //   if(data[i].latitude){
+    //     resultsWithCoords.push(data[i]);
+    //   }
+    // }
+    
+    // this.setState({searchResults: resultsWithCoords})
     this.setState({searchResults: data})
   }
 
   onSearchClick = event => {
-    API.saveResults(this.state.user.user.id, this.state.toMap)
+    
+    // Use this to display all search results. It Won't pass through check marked breweries that don't
+    // have coordinates.  Without one of the two solutions no breweries will be mapped after
+    // the first one not conataining coordinates that is selected 
+    // (example: user selects the first five breweries and clicks the map button. the third brewery doesn't
+    // have lat/long coords provided from the api. now the fourth and fifth breweries won't be mapped either.)
+    let withCoords = [];
+    for (var i=0; i<this.state.toMap.length; i++){
+      if (this.state.toMap[i].latitude){
+        withCoords.push(this.state.toMap[i]);
+      }
+    }
+    API.saveResults(this.state.user.user.id, withCoords)
   };
 
   onCheckmark = brewery => {
+    
     if(this.state.toMap.includes(brewery.brew)){
       var holder = this.state.toMap.indexOf(brewery.brew);
       this.state.toMap.splice(holder, 1);
