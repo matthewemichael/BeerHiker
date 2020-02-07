@@ -14,6 +14,12 @@ export default {
     },
     saveFavorites: function(id, favoriteData) {
       return axios.put("api/saved/"+id, favoriteData);
+    },
+    getFavorites: function(id) {
+      return axios.get("api/saved/"+id);
+    },
+    removeFavorite: function(id, toBeDeleted) {
+      return axios.put("api/delete/"+id, toBeDeleted)
     }
     
 

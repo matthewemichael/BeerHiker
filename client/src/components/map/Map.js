@@ -115,7 +115,17 @@ class Map extends Component {
   }
 
   onSearchClick = event => {
-  API.saveFavorites(this.state.user.user.id, this.state.toSave)
+    let temp = [];
+    console.log(this.state)
+    if(this.state.toMap.savedBreweries.length){
+      temp = this.state.toSave.concat(this.state.toMap.savedBreweries)
+    }
+    else{
+      temp = this.state.toSave
+    }
+    
+    console.log(temp)
+  API.saveFavorites(this.state.user.user.id, temp)
   };
 
   loadMap = () => {
