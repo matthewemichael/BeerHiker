@@ -255,7 +255,7 @@
     margin: 0;
 }
 .marker{
-    color: orangered;
+    color: #BF7138;
     font-size: 1.5em;
 }
 
@@ -327,8 +327,8 @@
 }
 
 .popupName {
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
 
 }
 
