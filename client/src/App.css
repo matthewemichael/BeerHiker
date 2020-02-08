@@ -315,7 +315,7 @@
     font-weight: 500;
     margin: 0;
 }
-.marker{
+.marker {
     color: #BF7138;
     font-size: 1.5em;
 }
@@ -424,6 +424,10 @@
     border-color: #154a5b !important;
 }
 
+#mapPageButton .fas {
+    margin-right: 4px;
+}
+
 .popupName {
     margin-bottom: 5px;
     font-weight: bolder;
@@ -448,14 +452,123 @@
 
 /* ----------- RESULTS ------------- */
 
-.breweryCard {
-    padding: 20px;
+.searchResultsContainer {
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.searchResultsCard {
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+
+.searchResultsTitle {
+    color: #154a5b;
+    margin-top: 6vh;
+    padding-left: 10px;
+}
+
+.searchResultsTitle h1 {
+    font-weight: 400;
+}
+
+.resultsLine {
+    border: .5px solid #fbfefe;
+    margin-bottom: 20px;
+
+}
+
+
+.searchResultsCard .card {
+    border: solid 1px #154a5b;
+    border-radius: 5px;
+}
+
+.searchResultsCard .card-header {
+    background-color: #fbfefe;
+    border: none;
+    
+}
+
+.searchResultsCard .card-header .brewCardTitle {
+    margin-bottom: 10px;
+    font-size: 1.125em;
+    font-weight: 500;
+    color: #154a5b;
+    cursor: pointer;
+}
+
+.searchResultsCard .card-header .brewCardTitle:hover {
+    color: #237B98;
+}
+
+.searchResultsCard button.btn.btn-primary,
+.searchResultsCard button.btn.btn-active,
+.searchResultsCard button.btn.btn.focus,
+.searchResultsCard button.btn.btn:focus {
+    background: transparent;
+    padding: 0px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: none;
+    box-shadow: none !important;
+    
+}
+
+.searchResultsCard .fas {
+    font-size: 1.5em;
+    color: #154a5b;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.searchResultsCard .fas:hover {
+    color: #237B98;
+}
+
+.searchResultsCard .card-body {
+    background-color: #fbfefe;
+    padding-top: 5px;
+}
+
+.searchResultsCard .card-body h6 {
+    padding: 0px 5px 0px 0px;
+}
+
+.breweryType {
+    text-transform: capitalize;
+}
+
+    /* ------- Checkbox ------- */
+.searchResultsCard .input-group-text {
+    padding: 0;
+    margin-right: 10px;
+    border: none;
+    background: none;
+}
+
+.searchResultsCard .card-footer {
+    background-color: #154a5b;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 
 
 /* ------------- SMALL SCREEN -------------- */
 
+@media screen and (max-width: 500px) {
+    .searchResultsTitle {
+        color: #154a5b;
+        margin-top: 4vh;
+        text-align: center;
+    }
+}
 @media screen and (max-width: 768px) {
 
     .logoMin {
@@ -466,6 +579,9 @@
         font-size: smaller;
     }
 
+    .searchResultsTitle h1 {
+        font-size: 1.5rem;
+    }
     #loginContainer {
         max-width: 90vw;
     }
@@ -474,6 +590,7 @@
         font-size: smaller;
     }
 
+    .searchResultsCard .fas,
     .mapBreweryCard .fas {
         font-size: 1em;
     }    
@@ -515,12 +632,12 @@
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 5vh;
     }
 
-    /* #mapPageButton {
-        margin-left: 10px;
-        margin-right: 0px;
-    } */
+    #mapPageButton {
+        margin-right: 5px;
+    }
   
     
 }

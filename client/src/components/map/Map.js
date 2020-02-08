@@ -165,7 +165,7 @@ class Map extends Component {
     
     if(this.state.hasCoord.length<1){
       this.setState({hasCoord: [{
-        name: "No search results Available",
+        name: "No search results available",
         latitude: 36.1627,
         longitude: -86.7816,
         id: 1
@@ -263,34 +263,9 @@ class Map extends Component {
             </div>
             <br />
             <div className="row brewList">
-              <div className="col-sm-12 mapButtonDiv">
-                <Button 
-                  id="mapPageButton"
-                  style={{ color: 'inherit', textDecoration: 'inherit'}}
-                >
-                  <Link
-                      to="/results"
-                      style={{ color: 'inherit', textDecoration: 'inherit'}}
-                    >
-                      Back to Results
-                  </Link>
-                </Button>
-                <Button
-                  id="mapPageButton"
-                  style={{ color: 'inherit', textDecoration: 'inherit'}}
-                >
-                  <Link
-                      to="/saved"
-                      onClick={this.onSearchClick} 
-                      style={{ color: 'inherit', textDecoration: 'inherit'}}
-                    >
-                      Save Breweries
-                  </Link>
-                </Button>
-              </div>
               {this.state.toMap.mapBreweries ? (
               this.state.hasCoord.map(brew => (
-              <div className="col-sm-12 col-xl-6 p-0">  
+              <div className="col-sm-12 col-xl-6 p-0" key={brew.id}>  
                 <div className="mapBreweryCard">
                   <Accordion>
                     <Card>
@@ -300,7 +275,7 @@ class Map extends Component {
                         </span>
                         <span>
                         <Accordion.Toggle as={Button} eventKey="0">
-                        <i class="fas fa-chevron-down"></i>
+                        <i className="fas fa-chevron-down"></i>
                         </Accordion.Toggle>
                         </span>
                       </Card.Header>
@@ -328,6 +303,31 @@ class Map extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
+            <div className="col-sm-12 mapButtonDiv p-0">
+                <Button 
+                  id="mapPageButton"
+                  style={{ color: 'inherit', textDecoration: 'inherit'}}
+                >
+                  <Link
+                      to="/results"
+                      style={{ color: 'inherit', textDecoration: 'inherit'}}
+                    >
+                     <i className="fas fa-chevron-left"></i> Results
+                  </Link>
+                </Button>
+                <Button
+                  id="mapPageButton"
+                  style={{ color: 'inherit', textDecoration: 'inherit'}}
+                >
+                  <Link
+                      to="/saved"
+                      onClick={this.onSearchClick} 
+                      style={{ color: 'inherit', textDecoration: 'inherit'}}
+                    >
+                      Save Breweries
+                  </Link>
+                </Button>
+              </div>
             </div>
         </div>
 
@@ -348,7 +348,3 @@ class Map extends Component {
     mapStateToProps,
     { logoutUser }
   )(Map);
-  
-  // const stuff = this.state.toMap;
-
-  // export {stuff}
