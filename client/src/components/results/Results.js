@@ -5,7 +5,7 @@ import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import InputGroup from 'react-bootstrap/InputGroup'
+import { Card, Button, Accordion, InputGroup } from 'react-bootstrap'
 
 
 
@@ -32,9 +32,9 @@ class Results extends Component {
   };
   
 
-   componentDidMount() {
+  componentDidMount() {
     
-     this.loadUserData();     
+    this.loadUserData();     
     
   }
 
@@ -107,65 +107,81 @@ class Results extends Component {
     return (
       <div className="background">
         <TopNav />
-        <div className="container">
-          <br />
-          <div className="row center">
-
+        <div className="row searchResultsContainer">
+          <div className="col-sm-12 searchResultsTitle">
             <h1>
-              {" "}
-              <span>BREWERY RESULTS</span>
+              <span>Search Results</span>
             </h1>
+            <hr className="resultsLine" />
           </div>
-          <br />
-          <form>
-          <div className="container" >
-
-            {this.state.searchResults.length ? (
-              this.state.searchResults.map(brew => (
-                <div className="section breweryCard" >
-                  <div className="card is-horizontal columns" >
-                    <div className="card-image column" >
-                        <div className="columns is-one-quarter"> 
-                          <InputGroup>
-                            <InputGroup.Prepend>
-                            <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
-                            </InputGroup.Prepend>
-                          </InputGroup>
-                          <div className="column">
-                            <p className="breweryTypeAddress">
-                              <strong>
-                                <ins>
-                                  {brew.name}
-                                </ins>
-                              </strong> 
-                              <br/>
-                              <b>Type: </b>{brew.brewery_type} | <b>Address: </b>{brew.street}, {brew.city}, {brew.state} | <b>Phone: </b>{this.formatPhoneNumber(brew.phone)}</p>
-                            <a href={brew.website_url}>{brew.website_url}</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  
-              ))
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </div>
-          </form>
-          <div className={`right`}>
-            <Link to="/beer">
-              <button className="button is-warning hoverable has-text-weight-bold">New Search</button>
-            </Link>
-            <Link to="/map">
-              <button onClick={this.onSearchClick} className="button is-warning hoverable has-text-weight-bold">Map</button>
-            </Link>
+          {this.state.searchResults.length ? (
+            this.state.searchResults.map(brew => (
+              <div className="col-sm-12 col-xl-6 p-0" key={brew.id}>
+                <div className="searchResultsCard">
+                  <Accordion>
+                    <Card>
+                      <Card.Header>
+                        <span className="brewCardTitle">
+                          {brew.name}
+                        </span>
+                        <span>
+                        <Accordion.Toggle as={Button} eventKey="0">
+                        <i className="fas fa-chevron-down"></i>
+                        </Accordion.Toggle>
+                        </span>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                          <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
+                          <h6 className="breweryTypeAddress"> <a href={`tel:${(brew.phone)}`}>{this.formatPhoneNumber(brew.phone)}</a> </h6>
+                          <h6><a href={brew.website_url} target="_blank" rel="noopener noreferrer">{brew.website_url}</a></h6>
+                          <h6 className="breweryType">Brewery Type: {brew.brewery_type}</h6>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                      <Card.Footer>
+                        <InputGroup>
+                          <InputGroup.Prepend>
+                          <InputGroup.Checkbox onClick={() => this.onCheckmark({brew})}/>
+                          <span className="mapCardFooterText">View on Map</span>
+                          </InputGroup.Prepend>
+                        </InputGroup>
+                      </Card.Footer>   
+                    </Card> 
+                  </Accordion>
+                </div>
+              </div>
+        
+            ))
+          ) : (
+            <h3 className="searchResultsTitle">No Results to Display</h3>
+          )}  
+          <div className="col-sm-12 mapButtonDiv p-0">
+            <Button 
+              id="mapPageButton"
+              style={{ color: 'inherit', textDecoration: 'inherit'}}
+            >
+              <Link
+                  to="/map"
+                  onClick={this.onSearchClick}
+                  style={{ color: 'inherit', textDecoration: 'inherit'}}
+                >
+                  Map Selected
+              </Link>
+            </Button>
+            <Button
+              id="mapPageButton"
+              style={{ color: 'inherit', textDecoration: 'inherit'}}
+            >
+              <Link
+                  to="/beer"
+                  style={{ color: 'inherit', textDecoration: 'inherit'}}
+                >
+                  New Search
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
-
-
     );
   }
 };
@@ -184,8 +200,3 @@ export default connect(
   mapStateToProps,
   { logoutUser }
 )(Results);
-// export default Results;
-
-
-
-
