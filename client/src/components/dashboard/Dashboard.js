@@ -47,15 +47,6 @@ class Dashboard extends Component {
               </h3>
               <img src={logoMin} className="logoMin" alt="logomin" />
               <br />
-              {/* <Button>
-              <Link
-                  to="/beer"
-                  
-                  className="btn"
-                >
-                  Search
-                </Link>
-                </Button> */}
             </div>
           </div>
           <div className="row">
@@ -70,64 +61,9 @@ class Dashboard extends Component {
               </h6> 
               
             </div>
-            {/* <div className="col-sm-12">
-            
-              {this.state.searchData.search ? (
-                  this.state.searchData.search.map(brew => (
-                      <p>
-                      Last Searches: {brew || "Not Used"}
-                    </p>
-                  )
-                  )
-
-                  // <p>Last Search: {this.state.searchData.search[0]}</p>
-                  // <p>Last Mapped: {this.state.searchData.mapBreweries[0].name}</p>
-                  
-                ) : (
-                  <h3>No Search Data to Display</h3>
-                )}
-            </div>    */}
           </div>
-          <div className="row">
-            {/* <div className="col-sm-12">
-              {this.state.searchData.mapBreweries ? (
-                this.state.searchData.mapBreweries.map(brew => (
-                    <p>
-                    Last Mapped: {brew.name}
-                  </p>
-                )
-                )
-
-                // <p>Last Search: {this.state.searchData.search[0]}</p>
-                // <p>Last Mapped: {this.state.searchData.mapBreweries[0].name}</p>
-                
-                ) : (
-                <h3>No Search Data to Display</h3>
-              )}
-            </div> */}
-          </div>
-          <div className="row">
-            {/* <div className="col-sm-12">
-              {this.state.searchData.savedBreweries ? (
-                  this.state.searchData.savedBreweries.map(brew => (
-                      <p>
-                      Last Saved: {brew.name}
-                    </p>
-                  )
-                  )
-
-                  // <p>Last Search: {this.state.searchData.search[0]}</p>
-                  // <p>Last Mapped: {this.state.searchData.mapBreweries[0].name}</p>
-                  
-                ) : (
-                  <h3>No Search Data to Display</h3>
-              )}
-            </div> */}
-          </div>
-      
-      
-        </Jumbotron>
-      </div>
+      </Jumbotron>
+    </div>
     );
   }
 }
