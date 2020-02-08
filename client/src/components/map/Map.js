@@ -8,7 +8,7 @@ import { logoutUser } from "../../actions/authActions"
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import coord from './coord.js';
 import Address from './addresses'
-import { InputGroup, Card, Button, Accordion, AccordionCollapse } from 'react-bootstrap'
+import { InputGroup, Card, Button, Accordion } from 'react-bootstrap'
 
 
 class Map extends Component {
@@ -123,6 +123,10 @@ class Map extends Component {
 
   setUserState = (data) => {
   this.setState({toMap: data});
+  }
+
+  getLastSearch = (data) => {
+    let lastSearch = []
   }
 
   onSearchClick = event => {
@@ -296,7 +300,7 @@ class Map extends Component {
                         </span>
                         <span>
                         <Accordion.Toggle as={Button} eventKey="0">
-                        <i class="fas fa-info-circle"></i>
+                        <i class="fas fa-chevron-down"></i>
                         </Accordion.Toggle>
                         </span>
                       </Card.Header>

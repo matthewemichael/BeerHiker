@@ -9,7 +9,7 @@
 /* ------------- LOGIN AND REGISTER ------------- */
 
 .wrapperContainer {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-image: url("./images/beers.jpeg");
     background-size: cover;
@@ -59,7 +59,7 @@
 
 .cardFooter {
     text-align: center;
-    background-color: rgb(13, 70, 93, 0.8);
+    background-color: #154a5b;
 }
 
 .red-text {
@@ -113,18 +113,23 @@
 }
 
 .logOut {
-    background-color: #177aa2;
+    background-color: #237B98;
+    transition: 300ms;
     color: white !important;
-    border: solid 1px rgb(13, 70, 93) !important;
-    border-radius: 2px;
+    border: solid #237B98 !important;
+    border-radius: 5px;
     font-weight: 400;
     text-decoration: none;
     margin-bottom: 0 !important;
 }
 
-.logOut:hover {
-    background-color: rgb(13, 70, 93);
+.logOut:hover,
+.logOut:active,
+.logOut:focus {
+    background-color: #154a5b !important;
+    border-color: #154a5b !important;
     color: white !important;
+
 }
 
 .leftLink {
@@ -158,14 +163,14 @@
 /* ----------- DASHBOARD ------------ */
 
 .jumbotron {
-    margin-top: 5vh;
+    margin-top: 8vh;
     margin-left: auto;
     margin-right: auto;
     width: 75vw;
     max-width: 860px;
-    background-color: rgb(245, 251, 254);
+    background-color: #fbfefe;
     border: solid 1px rgb(13, 70, 93, 0.6);
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .logoMin {
@@ -175,16 +180,20 @@
 }
 
 .dashSearch {
-    padding: 8px 5px 8px 5px;
-    color: rgb(13, 70, 93);
-    border: solid 1px rgb(13, 70, 93);
-    border-radius: 2px;
+    padding: 8px 8px 8px 8px;
+    color: white;
+    background-color: #237B98;
+    border: solid #237B98;
+    border-radius: 5px;
     font-weight: 400;
+    transition: 300ms;
 }
 
-.dashSearch:hover {
-    color: #177aa2;
-    border: solid 1px #177aa2;
+.dashSearch:hover,
+.dashSearch:active,
+.dashSearch:focus {
+    background-color: #154a5b !important;
+    border-color: #154a5b !important;
     text-decoration: none !important;
 }
 
@@ -195,8 +204,43 @@
 
 /* ------------ SEARCH ---------- */
 
+.searchContainer {
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.searchCard {
+    max-width: 720px;
+    margin-top: 8vh;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.searchCard.card {
+    border: solid 1px #154a5b;
+    border-radius: 4px;
+}
+
+.searchCard .card-header {
+    background-color: #fbfefe;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: none;
+}
+
+.brewSearchTitleDiv {
+    padding-top: 15px;
+}
 .brewSearchTitle {
-    font-weight: 300;
+    margin-bottom: 10px;
+    font-size: 1.125em;
+    font-weight: 400;
+    color: rgb(13, 70, 93);
+}
+
+.searchCard .card-body {
+    background-color: #fbfefe;
+    padding-top: 20px;
 }
 
 .brewSearch {
@@ -206,11 +250,12 @@
 
 .brewSearchButton {
     margin-top: 10px;
-    padding: 8px 5px 8px 5px;
-    background-color: rgb(245, 251, 254);
-    border: solid 1px rgb(13, 70, 93) !important;
-    color: rgb(13, 70, 93) !important;
-    border-radius: 2px;
+    margin-bottom: 20px;
+    padding: 8px 8px 8px 8px;
+    background-color: #237B98;
+    color: white !important;
+    border: solid #237B98 !important;
+    border-radius: 5px;
     font-weight: 400;
     text-decoration: none;
 }
@@ -218,12 +263,24 @@
 .brewSearchButton:hover,
 .brewSearchButton:active,
 .brewSearchButton:focus {
-    background-color: rgb(245, 251, 254);
-    color: #177aa2 !important;
-    border: solid 1px #177aa2 !important;
-    text-decoration: none !important;
+    background-color: #154a5b !important;
+    border-color: #154a5b !important;
 }
 
+.searchCard .card-footer {
+    background-color: #154a5b;
+    color: white;
+    text-align: center;
+    padding-bottom: 0;
+}
+
+.lastSearched {
+    text-transform: capitalize;
+}
+
+.lastSearchedCity {
+    color: rgb(252, 178, 62);
+}
 
 /* ----------- MAP ----------- */
 
@@ -248,7 +305,7 @@
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
-    border: solid 1px rgb(13, 70, 93, 0.8);
+    border: solid 1px #154a5b;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -275,12 +332,12 @@
 }
 
 .mapBreweryCard .card {
-    border: solid 1px rgb(13, 70, 93, 0.6);
-    border-radius: 4px;
+    border: solid 1px #154a5b;
+    border-radius: 5px;
 }
 
 .mapBreweryCard .card-header {
-    background-color: rgb(245, 251, 254);
+    background-color: #fbfefe;
     border: none;
     
 }
@@ -289,12 +346,12 @@
     margin-bottom: 10px;
     font-size: 1.125em;
     font-weight: 500;
-    color: #177aa2;
+    color: #154a5b;
     cursor: pointer;
 }
 
 .mapBreweryCard .card-header .brewCardTitle:hover {
-    color: rgb(13, 70, 93);
+    color: #237B98;
 }
 
 .mapBreweryCard button.btn.btn-primary,
@@ -311,20 +368,20 @@
     
 }
 
-.mapBreweryCard .fa-info-circle {
+.mapBreweryCard .fas {
     font-size: 1.5em;
-    color: #177aa2;
+    color: #154a5b;
     position: absolute;
     top: 12px;
     right: 12px;
 }
 
-.mapBreweryCard .fa-info-circle:hover {
-    color: rgb(13, 70, 93);
+.mapBreweryCard .fas:hover {
+    color: #237B98;
 }
 
 .mapBreweryCard .card-body {
-    background-color: rgb(245, 251, 254);
+    background-color: #fbfefe;
     padding-top: 5px;
 }
 
@@ -332,6 +389,7 @@
     padding: 0px 5px 0px 0px;
 }
 
+    /* ------- Checkbox ------- */
 .mapBreweryCard .input-group-text {
     padding: 0;
     margin-right: 10px;
@@ -340,7 +398,7 @@
 }
 
 .mapBreweryCard .card-footer {
-    background-color: #177aa2;
+    background-color: #154a5b;
     color: white;
     padding-top: 3px;
     padding-bottom: 3px;
@@ -351,10 +409,10 @@
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 8px 5px 8px 5px;
-    background-color: #177aa2;
+    background-color: #237B98;
     color: white !important;
-    border: solid 1px rgb(13, 70, 93) !important;
-    border-radius: 2px;
+    border: solid #237B98 !important;
+    border-radius: 5px;
     font-weight: 400;
     text-decoration: none;
 }
@@ -362,7 +420,8 @@
 #mapPageButton:hover,
 #mapPageButton:active,
 #mapPageButton:focus {
-    background-color: rgb(13, 70, 93);
+    background-color: #154a5b;
+    border-color: #154a5b !important;
 }
 
 .popupName {
@@ -386,53 +445,6 @@
     display: none;
 }
 
-/* .map_nav{
-    width: 18vw;
-    height: 80vh;
-    background-color: #000;
-    left: 0;
-    margin-top: 5vh;
-    position:absolute;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-}
-
-.btn_more{
-    margin: .2em;
-    position: absolute;
-    z-index: 15;
-}
-
-.search{
-    margin-top: 2em;
-    margin: 1em;
-    text-align: center;
-    color: #ccc;
-}
-
-.search_result{
-    width: 14vw;
-    height: 8vh;
-    box-sizing: border-box 2px 2px 3px #ccf;
-    background-color: transparent;
-    margin: 1em;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.search_result:hover{
-    background-color: #252525;
-    cursor: pointer;
-} */
-
 
 /* ----------- RESULTS ------------- */
 
@@ -440,77 +452,6 @@
     padding: 20px;
 }
 
-.containerCheck {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.containerCheck input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.containerCheck {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    /* background-color: #eee; */
-}
-
-/* On mouse-over, add a grey background color */
-/* .containerCheck:hover input ~ .checkmark {
-background-color: #ccc;
-} */
-
-/* When the checkbox is checked, add a blue background */
-/* .containerCheck input:checked ~ .checkmark {
-background-color: #2196F3;
-} */
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-/* Show the checkmark when checked */
-.containerCheck input:checked ~ .checkmark:after {
-    display: block;
-}
-
-/* Style the checkmark/indicator */
-.containerCheck .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
 
 
 /* ------------- SMALL SCREEN -------------- */
@@ -525,11 +466,15 @@ background-color: #2196F3;
         font-size: smaller;
     }
 
+    #loginContainer {
+        max-width: 90vw;
+    }
+
     .mapBreweryCard .card-header .brewCardTitle {
         font-size: smaller;
     }
 
-    .mapBreweryCard .fa-info-circle {
+    .mapBreweryCard .fas {
         font-size: 1em;
     }    
 
@@ -538,9 +483,12 @@ background-color: #2196F3;
     }
     .dashSearch {
         display: block;
+        max-width: 20vw;
         padding: 5px, 0, 5px, 0;
         margin-top: 2vh;
+        margin-right: auto;
         margin-bottom: 1vh;
+        margin-left: auto;
     }
 
     .brewSearchTitle {
@@ -548,12 +496,12 @@ background-color: #2196F3;
         font-weight: 300;
     }
 
-    .form-label {
+    .brewSearchButton .form-label {
         font-weight: 200;
         font-size: smaller;
     }
 
-    .form-control {
+    .brewSearch .form-control {
         margin-bottom: -10px;
     }
 
@@ -573,7 +521,8 @@ background-color: #2196F3;
         margin-left: 10px;
         margin-right: 0px;
     } */
- 
+  
+    
 }
 
 @media screen and (max-width: 767.98px) {
