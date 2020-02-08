@@ -586,8 +586,9 @@
         max-width: 90vw;
     }
 
-    .mapBreweryCard .card-header .brewCardTitle {
-        font-size: smaller;
+    .mapBreweryCard .card .brewCardTitle,
+    .searchResultsCard .card .brewCardTitle {
+        font-size: smaller !important;
     }
 
     .searchResultsCard .fas,
