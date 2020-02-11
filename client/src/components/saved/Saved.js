@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { Link } from "react-router-dom";
+
 import API from "../../utils/API";
 import TopNav from "../navbar/Navbar"
 import { Button, Accordion, Card } from 'react-bootstrap';
-import InputGroup from 'react-bootstrap/InputGroup'
+
 
 
 class Saved extends Component {
@@ -78,7 +78,7 @@ class Saved extends Component {
                   <Accordion>
                     <Card>
                       <Card.Header>
-                        <span className="brewCardTitle">
+                        <span className="savedCardTitle">
                           {brew.name}
                         </span>
                         <span>
@@ -89,19 +89,16 @@ class Saved extends Component {
                       </Card.Header>
                       <Accordion.Collapse eventKey="0">
                         <Card.Body>
-                          <h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6>
+                          <a href={`https://www.google.com/maps/dir/?api=1&destination=${brew.latitude},${brew.longitude}`} target="_blank" rel="noopener noreferrer"><h6 className="breweryTypeAddress"> {brew.street}, {brew.city} </h6></a>
                           <h6 className="breweryTypeAddress"> <a href={`tel:${(brew.phone)}`}>{this.formatPhoneNumber(brew.phone)}</a> </h6>
                           <h6><a href={brew.website_url} target="_blank" rel="noopener noreferrer">{brew.website_url}</a></h6>
                           <h6 className="breweryType">Brewery Type: {brew.brewery_type}</h6>
                         </Card.Body>
                       </Accordion.Collapse>
                       <Card.Footer>
-                        <InputGroup>
-                          <InputGroup.Prepend>
-                          <InputGroup.Checkbox onClick={() => this.deleteBrew({brew})}/>
-                          <span className="mapCardFooterText">Delete</span>
-                          </InputGroup.Prepend>
-                        </InputGroup>
+                        <span>
+                          <i className="fas fa-trash-alt" onClick={() => this.deleteBrew({brew})}></i>
+                        </span>
                       </Card.Footer>   
                     </Card> 
                   </Accordion>

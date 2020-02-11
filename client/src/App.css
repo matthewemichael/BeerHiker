@@ -299,7 +299,7 @@
 
 .searchResultsTitle {
     color: #154a5b;
-    margin-top: 6vh;
+    margin-top: 4vh;
     padding-left: 10px;
 }
 
@@ -330,11 +330,7 @@
     font-size: 1.125em;
     font-weight: 500;
     color: #154a5b;
-    cursor: pointer;
-}
-
-.searchResultsCard .card-header .brewCardTitle:hover {
-    color: #237B98;
+    
 }
 
 .searchResultsCard button.btn.btn-primary,
@@ -351,7 +347,7 @@
     
 }
 
-.searchResultsCard .fas {
+.searchResultsCard .fa-chevron-down {
     font-size: 1.5em;
     color: #154a5b;
     position: absolute;
@@ -359,7 +355,7 @@
     right: 12px;
 }
 
-.searchResultsCard .fas:hover {
+.searchResultsCard .fa-chevron-down:hover {
     color: #237B98;
 }
 
@@ -478,7 +474,7 @@
     
 }
 
-.mapBreweryCard .fas {
+.mapBreweryCard .fa-chevron-down {
     font-size: 1.5em;
     color: #154a5b;
     position: absolute;
@@ -486,7 +482,7 @@
     right: 12px;
 }
 
-.mapBreweryCard .fas:hover {
+.mapBreweryCard .fa-chevron-down:hover {
     color: #237B98;
 }
 
@@ -535,7 +531,7 @@
     border-color: #154a5b !important;
 }
 
-#mapPageButton .fas {
+#mapPageButton .fa-chevron-down {
     margin-right: 4px;
 }
 
@@ -558,6 +554,26 @@
 
 .mapboxgl-popup-close-button {
     display: none;
+}
+
+/* -------------- SAVED ---------------------- */
+
+.savedCardTitle {
+    margin-bottom: 10px;
+    font-size: 1.125em;
+    font-weight: 500;
+    color: #154a5b;
+}
+
+.searchResultsCard .fa-trash-alt {
+    margin-right: 10px;
+    display: inline-flex;
+}
+
+.searchResultsCard .fa-trash-alt:hover {
+    color: #ff3300;
+    cursor: pointer;
+    display: inline-flex !important;
 }
 
 
@@ -588,13 +604,14 @@
         max-width: 90vw;
     }
 
+    .savedCardTitle,
     .mapBreweryCard .card .brewCardTitle,
     .searchResultsCard .card .brewCardTitle {
         font-size: smaller !important;
     }
 
-    .searchResultsCard .fas,
-    .mapBreweryCard .fas {
+    .searchResultsCard .fa-chevron-down,
+    .mapBreweryCard .fa-chevron-down {
         font-size: 1em;
     }    
 

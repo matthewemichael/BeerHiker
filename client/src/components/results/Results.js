@@ -30,7 +30,6 @@ class Results extends Component {
     };
     return str
   };
-  
 
   componentDidMount() {
     
@@ -118,7 +117,7 @@ class Results extends Component {
             this.state.searchResults.map(brew => (
               <div className="col-sm-12 col-xl-6 p-0" key={brew.id}>
                 <div className="searchResultsCard">
-                  <Accordion>
+                  <Accordion defaultActiveKey="0">
                     <Card>
                       <Card.Header>
                         <span className="brewCardTitle">
