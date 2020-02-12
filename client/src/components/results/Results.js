@@ -99,6 +99,17 @@ class Results extends Component {
     else{
       this.state.toMap.push(brewery.brew)
     }
+  };
+
+  collapse = event => {
+    if(event.target.dataset.toggle === "true"){
+      event.target.dataset.toggle = "false";
+      event.target.className = "fas fa-chevron-up"
+    }
+    else{
+      event.target.dataset.toggle = "true";
+      event.target.className = "fas fa-chevron-down"
+    }
   }
 
 
@@ -124,8 +135,8 @@ class Results extends Component {
                           {brew.name}
                         </span>
                         <span>
-                        <Accordion.Toggle as={Button} eventKey="0">
-                        <i className="fas fa-chevron-down"></i>
+                        <Accordion.Toggle as={Button} eventKey="0" onClick={this.collapse} >
+                        <i className="fas fa-chevron-down" data-toggle={true}></i>
                         </Accordion.Toggle>
                         </span>
                       </Card.Header>

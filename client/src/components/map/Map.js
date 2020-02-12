@@ -202,18 +202,17 @@ class Map extends Component {
       selectedBrewery: null
     });
   };
-  
 
-  // onCheckmark = brewery => {
-  //   if(this.state.toMap.includes(brewery.brew)){
-  //     var holder = this.state.toMap.indexOf(brewery.brew);
-  //     this.state.toMap.splice(holder, 1);
-  //   }
-  //   else{
-  //     this.state.toMap.push(brewery.brew)
-  //   }
-  //   console.log(this.state.toMap);
-  // };
+  collapse = event => {
+    if(event.target.dataset.toggle === "true"){
+      event.target.dataset.toggle = "false";
+      event.target.className = "fas fa-chevron-up"
+    }
+    else{
+      event.target.dataset.toggle = "true";
+      event.target.className = "fas fa-chevron-down"
+    }
+  }
 
     render() {
       const handleKey = window.addEventListener("keydown", this.handleKeyboardEvent);
@@ -274,8 +273,8 @@ class Map extends Component {
                           {brew.name}
                         </span>
                         <span>
-                        <Accordion.Toggle as={Button} eventKey="0">
-                        <i className="fas fa-chevron-down"></i>
+                        <Accordion.Toggle as={Button} eventKey="0" onClick={this.collapse} >
+                        <i className="fas fa-chevron-down" data-toggle={true}></i>
                         </Accordion.Toggle>
                         </span>
                       </Card.Header>

@@ -347,7 +347,8 @@
     
 }
 
-.searchResultsCard .fa-chevron-down {
+.searchResultsCard .fa-chevron-down,
+.searchResultsCard .fa-chevron-up{
     font-size: 1.5em;
     color: #154a5b;
     position: absolute;
@@ -355,7 +356,8 @@
     right: 12px;
 }
 
-.searchResultsCard .fa-chevron-down:hover {
+.searchResultsCard .fa-chevron-down:hover,
+.searchResultsCard .fa-chevron-up:hover {
     color: #237B98;
 }
 
@@ -474,7 +476,8 @@
     
 }
 
-.mapBreweryCard .fa-chevron-down {
+.mapBreweryCard .fa-chevron-down,
+.mapBreweryCard .fa-chevron-up {
     font-size: 1.5em;
     color: #154a5b;
     position: absolute;
@@ -482,7 +485,8 @@
     right: 12px;
 }
 
-.mapBreweryCard .fa-chevron-down:hover {
+.mapBreweryCard .fa-chevron-down:hover,
+.mapBreweryCard .fa-chevron-up:hover {
     color: #237B98;
 }
 
@@ -531,7 +535,8 @@
     border-color: #154a5b !important;
 }
 
-#mapPageButton .fa-chevron-down {
+#mapPageButton .fa-chevron-down,
+#mapPageButton .fa-chevron-up {
     margin-right: 4px;
 }
 
@@ -611,7 +616,9 @@
     }
 
     .searchResultsCard .fa-chevron-down,
-    .mapBreweryCard .fa-chevron-down {
+    .mapBreweryCard .fa-chevron-down,
+    .searchResultsCard .fa-chevron-up,
+    .mapBreweryCard .fa-chevron-up {
         font-size: 1em;
     }    
 
