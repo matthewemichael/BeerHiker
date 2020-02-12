@@ -43,7 +43,7 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-sm-12 text-center">
               <h3>
-                <b>Cheers,</b> {user.name.split(" ")[0]}!
+                Cheers,  {user.name.split(" ")[0]}!
               </h3>
               <img src={logoMin} className="logoMin" alt="logomin" />
               <br />
