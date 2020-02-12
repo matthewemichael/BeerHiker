@@ -104,11 +104,11 @@ class Results extends Component {
   collapse = event => {
     if(event.target.dataset.toggle === "true"){
       event.target.dataset.toggle = "false";
-      event.target.className = "fas fa-chevron-up"
+      event.target.className = "fas fa-chevron-down"
     }
     else{
       event.target.dataset.toggle = "true";
-      event.target.className = "fas fa-chevron-down"
+      event.target.className = "fas fa-chevron-up"
     }
   }
 
@@ -126,7 +126,7 @@ class Results extends Component {
           </div>
           {this.state.searchResults.length ? (
             this.state.searchResults.map(brew => (
-              <div className="col-sm-12 col-xl-6 p-0" key={brew.id}>
+              <div className="col-sm-12 p-0" key={brew.id}>
                 <div className="searchResultsCard">
                   <Accordion defaultActiveKey="0">
                     <Card>
@@ -136,7 +136,7 @@ class Results extends Component {
                         </span>
                         <span>
                         <Accordion.Toggle as={Button} eventKey="0" onClick={this.collapse} >
-                        <i className="fas fa-chevron-down" data-toggle={true}></i>
+                        <i className="fas fa-chevron-up" data-toggle={true}></i>
                         </Accordion.Toggle>
                         </span>
                       </Card.Header>
