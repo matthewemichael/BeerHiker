@@ -572,13 +572,12 @@
 
 .searchResultsCard .fa-trash-alt {
     margin-right: 10px;
-    display: inline-flex;
+    display: block;
 }
 
 .searchResultsCard .fa-trash-alt:hover {
     color: #ff3300;
     cursor: pointer;
-    display: inline-flex !important;
 }
 
 
@@ -590,6 +589,12 @@
         margin-top: 4vh;
         text-align: center;
     }
+
+    .searchCard {
+        margin-top: 2vh;
+    
+    }
+
 }
 
 @media screen and (max-width: 768px) {
