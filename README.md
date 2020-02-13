@@ -7,9 +7,9 @@
 
 ## How The App Works
 
-This full stack application was built with a React front end, a MongoDB database and Node and Express for the back end.  
+This full stack application was built with a React front end, a MongoDB database and Node and Express for the back end.
 
-Users must first register for an account and log in. This process is handled with passport and JSON webtoken. Correct form input in validated and while a user is logged in they have access to protected routes until logged out. Once logged in users can search for a variety of types of breweries by city and state. A search makes a request to Open Brewery DB, a free API for public information on breweries. The results are diplayed and multiple breweries may be selected to view on a map. This app uses React-Map-GL, which is a React wrapper for Mapbox GL JS and a part of Uber's open source projects. The breweries are mapped by passing their lattitude and longitude coordinates to React-Map-GL which creates a marker for each location. Each marker has a popup that contains the brewery name and a link to get directions. Breweries may also be saved to a list for future reference. 
+Users must first register for an account and log in. This process is handled with passport and JSON webtoken. Correct form input is validated and while a user is logged in they have access to protected routes until logged out. Once logged in users can search for a variety of types of breweries by city and state. A search makes a request to Open Brewery DB, a free API for public information on breweries. The results are displayed and multiple breweries may be selected to view on a map. This app uses React-Map-GL, which is a React wrapper for Mapbox GL JS and a part of Uber's open source projects. The breweries are mapped by passing their latitude and longitude coordinates to React-Map-GL which creates a marker for each location. Each marker has a popup that contains the brewery name and a link to get directions. Breweries may also be saved to a list for future reference.
   
 
 ---  
